@@ -1,7 +1,7 @@
 ///<summary>
-/// Author:
+/// Author: Aidan
 ///
-///
+/// Logic for displaying player info on the hud
 ///
 ///</summary>
 
