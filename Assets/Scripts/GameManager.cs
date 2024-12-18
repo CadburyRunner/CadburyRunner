@@ -5,6 +5,7 @@
 ///
 ///</summary>
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -35,7 +36,23 @@ namespace CadburyRunner
 
         public void Quit() { Application.Quit(); }
 
-        public void LoadScene(string name) { SceneManager.LoadSceneAsync(name); }
+        public void LoadScene(string name) 
+        {
+            StartCoroutine(AsyncLoad(name, name != "MainMenu"));
+        }
+
+        private IEnumerator AsyncLoad(string name, bool showPauseMenu = false)
+        {
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(name);
+
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+
+            if (showPauseMenu)
+                ShowPauseButton();
+        }
 
         public void OnLose()
         {
