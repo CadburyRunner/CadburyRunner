@@ -6,6 +6,7 @@
 ///</summary>
 
 using UnityEngine;
+using CadburyRunner.ScoreSystem;
 
 namespace CadburyRunner.Pickup
 {
@@ -35,15 +36,17 @@ namespace CadburyRunner.Pickup
 
         public void CollectPickup()
         {
-            // TODO: Add point value to score.
-            // -----------------------------------
+            if (pickupType == 0)
+            {
+                ScoreManager.AddScore(m_chocolatePickup.GetPointValue());   // Add the "m_pointValue" int from the chocolate bar ScriptableObject to the players score.
+                Debug.Log(ScoreManager.Score);
 
-            Debug.Log("Add " + m_chocolatePickup.GetPointValue() + " points to the players score.");
+                if (m_aSystem != null) { m_aSystem.PlaySound(2, 2); }       // Play the Pickup sound.
+                m_aSystem = null;
+                m_chocolatePickup = null;
+            }
 
-            if (m_aSystem != null) { m_aSystem.PlaySound(2, 2); }
-            m_aSystem = null;
-            m_chocolatePickup = null;
-            Destroy(this.gameObject);
+            Destroy(this.gameObject);                                   // Destroy the pickup.
         }
 
         private void OnTriggerEnter(Collider other)
