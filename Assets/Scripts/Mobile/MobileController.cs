@@ -128,7 +128,7 @@ namespace CadburyRunner.Mobile
                 if (m_gyroEuler.y <= 180)
                 {
                     Debug.Log("Tilt Forward");
-                    m_tiltForwardEvent.Invoke(m_gyroEuler.y - m_tiltThreashold.y * m_tiltSensitivity);
+                    m_tiltForwardEvent.Invoke((m_gyroEuler.y - m_tiltThreashold.y) * m_tiltSensitivity);
                 }
                 else
                 {
@@ -139,15 +139,16 @@ namespace CadburyRunner.Mobile
             //repeat
             if (m_gyroEuler.x > m_tiltThreashold.x && m_gyroEuler.x < 360.0f - m_tiltThreashold.x)
             {
-                if(m_gyroEuler.x <= 180)
+                float pitch = (m_gyroEuler.x - m_tiltThreashold.x) * m_tiltSensitivity;
+                if (m_gyroEuler.x <= 180)
                 {
                     Debug.Log("Tilt Right");
-                    m_tiltRightEvent.Invoke(m_gyroEuler.x - m_tiltThreashold.x * m_tiltSensitivity);
+                    m_tiltRightEvent.Invoke((m_gyroEuler.x - m_tiltThreashold.x) * m_tiltSensitivity + 0.5f);
                 }
                 else
                 {
                     Debug.Log("Tilt Left");
-                    m_tiltLeftEvent.Invoke(-(360 - m_gyroEuler.x - m_tiltThreashold.x) * m_tiltSensitivity);
+                    m_tiltLeftEvent.Invoke(-(360 - m_gyroEuler.x - m_tiltThreashold.x) * m_tiltSensitivity + 0.5f);
                 }
             }
         }

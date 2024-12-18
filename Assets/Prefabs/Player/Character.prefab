@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 7137171416823435135}
   - component: {fileID: 7137171416823435130}
   - component: {fileID: 7137171416823435131}
+  - component: {fileID: 7591058696279420775}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -146,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_leftFull: -1
   m_rightFull: 1
-  m_Input: 0.434
+  m_input: 0
   m_slidingTime: 1.5
   forcePower: 250
   m_normalCollider: {fileID: 7137171417246446062}
@@ -167,6 +168,127 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &7591058696279420775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7137171416823435132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed364e87517f564eb1d198801fb2e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_tiltThreashold: {x: 0, y: 200}
+  m_tiltSensitivity: 0.03
+  m_swipeThreashold: 15
+  m_holdDelay: 0.3
+  m_swipeUpEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7137171416823435130}
+        m_TargetAssemblyTypeName: CadburyRunner.Movement.CharacterMovement, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_swipeDownEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7137171416823435130}
+        m_TargetAssemblyTypeName: CadburyRunner.Movement.CharacterMovement, Assembly-CSharp
+        m_MethodName: Slide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_swipeLeftEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_swipeRightEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_tapLeftEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7137171416823435130}
+        m_TargetAssemblyTypeName: CadburyRunner.Movement.CharacterMovement, Assembly-CSharp
+        m_MethodName: SideToSideMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_tapRightEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7137171416823435130}
+        m_TargetAssemblyTypeName: CadburyRunner.Movement.CharacterMovement, Assembly-CSharp
+        m_MethodName: SideToSideMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_tapEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_tiltLeftEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7137171416823435130}
+        m_TargetAssemblyTypeName: CadburyRunner.Movement.CharacterMovement, Assembly-CSharp
+        m_MethodName: SideToSideMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_tiltRightEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7137171416823435130}
+        m_TargetAssemblyTypeName: CadburyRunner.Movement.CharacterMovement, Assembly-CSharp
+        m_MethodName: SideToSideMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_tiltForwardEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_tiltBackwardEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7137171417246446062
 GameObject:
   m_ObjectHideFlags: 0
