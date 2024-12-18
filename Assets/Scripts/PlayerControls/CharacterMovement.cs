@@ -8,6 +8,7 @@
 using UnityEngine;
 using CadburyRunner.Obstacle;
 using System.Collections;
+using CadburyRunner.Audio;
 
 namespace CadburyRunner
 {
@@ -82,6 +83,9 @@ namespace CadburyRunner
 
                     // add force up
                     m_rb.AddForce(Vector3.up * forcePower, ForceMode.Force);
+
+                    // play sound effect
+                    AudioSystem.Instance.PlaySound(1, 0);
                 }
             }
 
@@ -105,6 +109,9 @@ namespace CadburyRunner
 
                         // start the IsSliding coroutine
                         StartCoroutine(IsSliding());
+
+                        // play sound effect
+                        AudioSystem.Instance.PlaySound(0, 0);
                     }
                 }
             }

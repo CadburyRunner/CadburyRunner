@@ -16,7 +16,12 @@ namespace CadburyRunner.Pickup
 	{
         [SerializeField] private GameObject m_model;
         [SerializeField] private int m_pointValue;
-  
+
+        private void Start()
+        {
+            Instantiate(m_model, transform);
+        }
+
         public void CollectPickup()
         {
             ScoreManager.Instance.AddScoreCollectable(m_pointValue);   // Add the "m_pointValue" int from the chocolate bar ScriptableObject to the players score.
