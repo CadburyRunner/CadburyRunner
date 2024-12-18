@@ -1,12 +1,12 @@
 ///<summary>
 /// Author: Aidan
 ///
-///
+/// Basic obstacle that damages player when collider is triggered and conditions are met
 ///
 ///</summary>
 
-using UnityEditor;
 using UnityEngine;
+using CadburyRunner.Movement;
 
 namespace CadburyRunner.Obstacle
 {
@@ -20,16 +20,15 @@ namespace CadburyRunner.Obstacle
     public class Obstacle : MonoBehaviour
 	{
 
-
         [SerializeField] private ObstacleType m_type;
 
         public void OnTriggerEnter(Collider other)
         {
+            //if player colliding
             if (other.CompareTag("Player"))
             {
-                //deal damage
-
-                
+                //deal damage and parse obstacle type to player
+                other.GetComponent<CharacterMovement>().GetHit(m_type);
             }
         }
 
