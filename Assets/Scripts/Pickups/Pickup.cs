@@ -21,7 +21,7 @@ namespace CadburyRunner.Pickup
         {
             InitializePickup();
         }
-
+  
 
         // Initializes all necessary variables and references for the pickup.
         public void InitializePickup()
@@ -39,14 +39,13 @@ namespace CadburyRunner.Pickup
             if (pickupType == 0)
             {
                 ScoreManager.AddScore(m_chocolatePickup.GetPointValue());   // Add the "m_pointValue" int from the chocolate bar ScriptableObject to the players score.
-                Debug.Log(ScoreManager.Score);
 
-                if (m_aSystem != null) { m_aSystem.PlaySound(2, 2); }       // Play the Pickup sound.
+                if (m_aSystem != null) { m_aSystem.PlaySound(2, 2); } // Play the Pickup sound.
                 m_aSystem = null;
                 m_chocolatePickup = null;
             }
 
-            Destroy(this.gameObject);                                   // Destroy the pickup.
+            Destroy(this.gameObject); // Destroy the pickup.
         }
 
         private void OnTriggerEnter(Collider other)
