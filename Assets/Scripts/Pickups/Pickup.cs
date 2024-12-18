@@ -31,30 +31,29 @@ namespace CadburyRunner.Pickup
             Instantiate(m_model, transform);
         }
 
-        public void CollectPickup()
-        {
-            
-        }
-
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
             {
                 PlayerStatus player = other.GetComponentInParent<PlayerStatus>();
+                int pickupType = 0;
 
                 switch (m_type)
                 {
                     case PickupType.Shield:
                         player.ShieldPickup(m_powerupTime);
+                        pickupType = 1;
                         break;
                     case PickupType.Magnet:
                         player.MagnetPickup(m_powerupTime);
+                        pickupType = 1;
                         break;
                 }
                 
                 ScoreManager.Instance.AddScoreCollectable(m_pointValue);   // Add the "m_pointValue" int from the chocolate bar ScriptableObject to the players score.
 
-                AudioSystem.Instance.PlaySound(2, 2); // Play the Pickup sound.
+                if (pickupType == 0) { AudioSystem.Instance.PlaySound(2, 2); } // Play the Pickup sound.
+                else { AudioSystem.Instance.PlaySound(2, 3); } // Play the Powerup sound.
 
                 Destroy(gameObject); // Destroy the pickup.
             }
