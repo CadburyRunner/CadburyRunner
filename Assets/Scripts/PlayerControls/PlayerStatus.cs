@@ -7,7 +7,7 @@
 
 using CadburyRunner.Level;
 using CadburyRunner.Obstacle;
-using System.Runtime.CompilerServices;
+using CadburyRunner.ScoreSystem;
 using UnityEngine;
 
 namespace CadburyRunner.Player
@@ -25,6 +25,9 @@ namespace CadburyRunner.Player
         [SerializeField] private GameObject m_shieldObject;
         private bool m_hasShield = false;
 		private float m_shieldTime;
+		[Header("Point Multiplier")]
+		private bool m_hasMultiplier = false;
+		private float m_multiplierTime;
 
 
 		private bool m_tripped = false;
@@ -72,6 +75,21 @@ namespace CadburyRunner.Player
 					m_hasShield = false;
 					m_shieldObject.SetActive(false);
 				}
+			}
+
+			//check to remove multiplier powerup
+			if (m_hasMultiplier)
+			{
+				if (m_multiplierTime >= 0)
+				{
+					m_multiplierTime -= Time.deltaTime;
+
+				}
+				else
+				{
+					m_hasMultiplier = false;
+                    ScoreManager.Instance.ChangeMulti(1f);
+                }
 			}
         }
 
@@ -129,6 +147,18 @@ namespace CadburyRunner.Player
 			}
 			return false;
 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="type"></param>
+		public void MultiplierPickup(float time)
+		{
+			m_hasMultiplier = true;
+			m_multiplierTime = time;
+			ScoreManager.Instance.ChangeMulti(2f);
+		}
+
 
         public void Die(ObstacleType type)
 		{
