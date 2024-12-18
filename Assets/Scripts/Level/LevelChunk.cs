@@ -5,26 +5,42 @@
 ///
 ///</summary>
 
+using UnityEditor;
 using UnityEngine;
 
 namespace CadburyRunner.Level
 {
 	public class LevelChunk : MonoBehaviour
 	{
+		[SerializeField] private Transform m_endPoint;
+
+		[Header("Pickup Spawning")]
+		[Tooltip("Appears Pink in the scene view.")]
+		[SerializeField] private Transform[] m_pickupPositions;
+		[SerializeField] private GameObject[] m_possiblePickups;
+		
+		[Header("Obstacle Spawning")]
+		[Tooltip("Appears Blue in the scene view.")]
 		[SerializeField] private Transform[] m_obstaclePositions;
 		[SerializeField] private GameObject[] m_possibleObstacles;
-
-		[SerializeField] private Transform m_endPoint;
 
 		public Vector3 EndPoint => m_endPoint.position;
 		
 		public void Init()
 		{
-			for (int i = 0; i < m_obstaclePositions.Length - 1 ; i++)
+			// spawn pickups
+			for (int i = 0; i < m_pickupPositions.Length; i++)
+			{
+				// roll to create pickup
+				Instantiate(m_possiblePickups[Random.Range(0, m_possiblePickups.Length)], m_pickupPositions[i].transform);
+			}
+
+			// spawn obstacles
+			for (int i = 0; i < m_obstaclePositions.Length; i++)
 			{
 				// roll to create obstacle
 				if (Random.value <= LevelMetrics.ObstacleSpawnChance)
-					Instantiate(m_possibleObstacles[Random.Range(0, m_possibleObstacles.Length - 1)], transform);
+					Instantiate(m_possibleObstacles[Random.Range(0, m_possibleObstacles.Length)], m_obstaclePositions[i].transform);
 			}
 		}
 
@@ -39,6 +55,23 @@ namespace CadburyRunner.Level
 			{
 				LevelManager.Instance.GenerateNewChunk();
 			}
+        }
+
+        private void OnDrawGizmos()
+        {
+			Handles.color = Color.magenta;
+			// draw pickup positions
+			for (int i = 0; i < m_pickupPositions.Length; i++)
+			{
+                Handles.DrawWireCube(m_pickupPositions[i].position, Vector3.one);
+            }
+
+            Handles.color = Color.blue;
+			// draw obstacle positions
+			for (int i = 0; i < m_obstaclePositions.Length; i++)
+            {
+				Handles.DrawWireCube(m_obstaclePositions[i].position, Vector3.one);
+            }
         }
     }
 }

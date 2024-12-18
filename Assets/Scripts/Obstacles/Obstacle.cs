@@ -30,7 +30,7 @@ namespace CadburyRunner.Obstacle
             if (other.CompareTag("Player"))
             {
                 //deal damage and parse obstacle type to player
-                other.GetComponent<CharacterMovement>().GetHit(m_type);
+                //other.GetComponent<CharacterMovement>().GetHit(m_type);
             }
         }
 
