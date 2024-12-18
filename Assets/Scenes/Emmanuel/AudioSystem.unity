@@ -783,7 +783,7 @@ MonoBehaviour:
   m_soundClips:
   - {fileID: 8300000, guid: 5249f1b93eb9cf649af72c95141d5cf3, type: 3}
   - {fileID: 8300000, guid: 6dc63b4a3a5988d4691f1efba8a06fe1, type: 3}
-  - {fileID: 8300000, guid: 50c8dc416fe5b8c4a845e01b965eaf4a, type: 3}
+  - {fileID: 8300000, guid: d45671cc79998fe489acf60eaee41761, type: 3}
   m_soundSources:
   - {fileID: 2088749271}
   - {fileID: 2088749274}
