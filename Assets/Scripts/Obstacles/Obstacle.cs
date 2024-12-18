@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using CadburyRunner.Movement;
+using CadburyRunner.ScoreSystem;
 
 namespace CadburyRunner.Obstacle
 {
@@ -24,6 +25,7 @@ namespace CadburyRunner.Obstacle
 
         public void OnTriggerEnter(Collider other)
         {
+
             //if player colliding
             if (other.CompareTag("Player"))
             {

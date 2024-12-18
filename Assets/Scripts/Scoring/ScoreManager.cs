@@ -16,7 +16,10 @@ namespace CadburyRunner.ScoreSystem
         private static float m_score;
         private static float m_scoreMulti = 1f;
 
+        private static int m_collectableCount = 0;
+
         public static float Score => m_score;
+        public static int CollectableCount => m_collectableCount;
 
         private void Awake()
         {
@@ -46,7 +49,21 @@ namespace CadburyRunner.ScoreSystem
         {
             if (Instance) m_score += scoreToAdd * m_scoreMulti;
         }
-        
+
+        /// <summary>
+        /// adds an amount of score to the points, also adds one to the collectable tally
+        /// </summary>
+        /// <param name="scoreToAdd"></param>
+        public static void AddScoreCollectable(float scoreToAdd)
+        {
+            if (Instance)
+            {
+                m_score += scoreToAdd * m_scoreMulti;
+                m_collectableCount++;
+            }
+        }
+
+
         /// <summary>
         /// Sets all scoring values to zero
         /// </summary>
@@ -54,7 +71,7 @@ namespace CadburyRunner.ScoreSystem
         {
             m_score = 0f;
             m_scoreMulti = 1f;
-
+            m_collectableCount = 0;
         }
         
         /// <summary>
