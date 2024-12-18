@@ -14,13 +14,16 @@ namespace CadburyRunner.Player
 {
 	public class PlayerStatus : MonoBehaviour
 	{
+		[Header("Magnet Variables")]
 		[SerializeField] private SphereCollider m_pickupRadius;
 		[SerializeField] private float m_pickupRadiusNormal;
 		[SerializeField] private float m_pickupRadiusMagnet;
+		[SerializeField] private GameObject m_magnetObject;
 		private bool m_hasMagnet;
 		private float m_magnetTime;
-
-		private bool m_hasShield = false;
+		[Header("Shield Variables")]
+        [SerializeField] private GameObject m_shieldObject;
+        private bool m_hasShield = false;
 		private float m_shieldTime;
 
 
@@ -52,6 +55,7 @@ namespace CadburyRunner.Player
 				else 
 				{
 					m_hasMagnet = false;
+					m_magnetObject.SetActive(false);
                     m_pickupRadius.radius = m_pickupRadiusNormal;
                 }
 			}
@@ -66,6 +70,7 @@ namespace CadburyRunner.Player
 				else
 				{
 					m_hasShield = false;
+					m_shieldObject.SetActive(false);
 				}
 			}
         }
@@ -96,6 +101,7 @@ namespace CadburyRunner.Player
 		{
 			m_hasMagnet = true;
 			m_magnetTime = time;
+			m_magnetObject.SetActive(true);
 			m_pickupRadius.radius = m_pickupRadiusMagnet;
 		}
 		/// <summary>
@@ -106,7 +112,8 @@ namespace CadburyRunner.Player
 		{
 			m_hasShield = true;
 			m_shieldTime = time;
-		}
+            m_shieldObject.SetActive(true);
+        }
 		/// <summary>
 		/// Check if the shield is active and resets it
 		/// </summary>
