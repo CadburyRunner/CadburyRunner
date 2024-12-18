@@ -13,8 +13,7 @@ namespace CadburyRunner.AudioSystem
 	public class AudioSystem : MonoBehaviour
 	{
 		[SerializeField] private AudioClip[] m_soundClips;			// Array of all AudioClips.
-		[SerializeField] private AudioSource[] m_soundSources;		// Array of all AudioSources.
-		private AudioListener m_playerEars;							// Reference to the players AudioListener.
+		[SerializeField] private AudioSource[] m_soundSources;      // Array of all AudioSources.
 
 		// Plays the specified sound using the "soundIndex" int passed through.
 		public void PlaySound(int soundIndex, int sourceIndex)
