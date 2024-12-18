@@ -18,7 +18,7 @@ namespace CadburyRunner
             [Header("Float variables")]
             [SerializeField] private float m_leftFull;
             [SerializeField] private float m_rightFull;
-            [SerializeField, Range(0, 1)] private float m_Input;
+            [SerializeField, Range(0, 1)] private float m_input;
             [SerializeField] private float m_slidingTime;
             [SerializeField] private float forcePower;
 
@@ -39,11 +39,7 @@ namespace CadburyRunner
             {
                 m_isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, LayerMask.NameToLayer("Ground"));
 #if UNITY_EDITOR
-                if (Input.GetKey(KeyCode.D))
-                    m_Input += 1f * Time.deltaTime;
-                if (Input.GetKey(KeyCode.A))
-                    m_Input -= 1f * Time.deltaTime;
-                SideToSideMovement(m_Input);
+                SideToSideMovement(m_input);
                 if (Input.GetKeyDown(KeyCode.S))
                     Slide();
 
@@ -52,9 +48,15 @@ namespace CadburyRunner
 #endif
             }
 
+            private void FixedUpdate()
+            {
+                transform.position = Vector3.Lerp(new Vector3(m_leftFull,transform.position.y,0), new Vector3(m_rightFull,transform.position.y,0), m_input);
+                
+            }
+
             public void SideToSideMovement(float input)
             {
-                transform.position = Vector3.Lerp(new Vector3(m_leftFull,transform.position.y,0), new Vector3(m_rightFull,transform.position.y,0), input);
+                m_input = input;
             }
 
             public void Jump()
