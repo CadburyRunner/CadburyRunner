@@ -268,6 +268,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1827739326, guid: 255bf61a0cba5fd4eaf54d80cf3c0a59, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7231078258630135822, guid: 255bf61a0cba5fd4eaf54d80cf3c0a59,
         type: 3}
       propertyPath: m_RootOrder
@@ -783,7 +787,7 @@ MonoBehaviour:
   m_soundClips:
   - {fileID: 8300000, guid: 5249f1b93eb9cf649af72c95141d5cf3, type: 3}
   - {fileID: 8300000, guid: 6dc63b4a3a5988d4691f1efba8a06fe1, type: 3}
-  - {fileID: 8300000, guid: 50c8dc416fe5b8c4a845e01b965eaf4a, type: 3}
+  - {fileID: 8300000, guid: d45671cc79998fe489acf60eaee41761, type: 3}
   m_soundSources:
   - {fileID: 2088749271}
   - {fileID: 2088749274}
