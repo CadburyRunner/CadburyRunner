@@ -21,6 +21,7 @@ namespace CadburyRunner.Player
 		private float m_magnetTime;
 
 		private bool m_hasShield = false;
+		private float m_shieldTime;
 
 
 		private bool m_tripped = false;
@@ -41,6 +42,7 @@ namespace CadburyRunner.Player
 				}
 			}
 
+			// check to remove magnet powerup
 			if (m_hasMagnet)
 			{
 				if (m_magnetTime >= 0)
@@ -53,10 +55,26 @@ namespace CadburyRunner.Player
                     m_pickupRadius.radius = m_pickupRadiusNormal;
                 }
 			}
+
+			// check to remove shield powerup
+			if (m_hasShield)
+			{
+				if(m_shieldTime >= 0)
+				{
+					m_shieldTime -= Time.deltaTime;
+				}
+				else
+				{
+					m_hasShield = false;
+				}
+			}
         }
 
         public void Trip()
 		{
+			if (ShieldCheck())
+				return;
+			
 			if (m_tripped)
 			{
 				//if player has already tripped die
@@ -70,28 +88,51 @@ namespace CadburyRunner.Player
 			}
 		}
 
-
+		/// <summary>
+		/// initiate magnet pickup
+		/// </summary>
+		/// <param name="time">how long pickup will last for</param>
 		public void MagnetPickup(float time)
 		{
 			m_hasMagnet = true;
 			m_magnetTime = time;
 			m_pickupRadius.radius = m_pickupRadiusMagnet;
 		}
+		/// <summary>
+		/// initiate shield pickup
+		/// </summary>
+		/// <param name="time">how long pickup will last for</param>
+		public void ShieldPickup(float time)
+		{
+			m_hasShield = true;
+			m_shieldTime = time;
+		}
+		/// <summary>
+		/// Check if the shield is active and resets it
+		/// </summary>
+		/// <returns>true if the shield is active</returns>
+		private bool ShieldCheck()
+		{
+			if (m_hasShield)
+			{
+				m_hasShield = false;
+				m_shieldTime = 0;
+				return true;
+			}
+			return false;
+		}
 
         public void Die(ObstacleType type)
 		{
-            switch (type)
-            {
-                case ObstacleType.Trip:
-					//do trip logic
-                    break;
-                case ObstacleType.Slam:
-					//do slam logic
-                    break;
-                case ObstacleType.Fall:
-					//do fall logic
-                    break;
-            }
+			switch (type)
+			{
+				case ObstacleType.Trip:
+					break;
+				case ObstacleType.Slam:
+					break;
+				case ObstacleType.Fall:
+					break;
+			}
 			//show loss screen
             GameManager.Instance.OnLose();
         }
