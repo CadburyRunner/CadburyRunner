@@ -12,12 +12,15 @@ namespace CadburyRunner.Mobile
 {
 	public class MobileController : MonoBehaviour
 	{
+        public static MobileController Instance { get; private set; }
+
+
         [Min(0)]
         [Tooltip("The angle in degrees for a tilt input to be registered.")]
-		[SerializeField] private Vector2 m_tiltThreashold = new(10f, 10f);
+		[SerializeField] private Vector2 m_tiltThreashold = new(0.5f, 0.5f);
+        private Vector3 m_inputedRotation;
         [Min(0)]
         [SerializeField] private float m_tiltSensitivity = 1;
-        private Vector3 m_gyroEuler;
         [Tooltip("The distance in pixels that a swipe has to be to count as a swipe input.")]
 		[SerializeField] private float m_swipeThreashold = 15f;
         [Tooltip("The time to wait before reading a tap input as a held input.")]
@@ -40,10 +43,25 @@ namespace CadburyRunner.Mobile
         private Vector3 lp;   //Last touch position
         private float dragDistance;  //minimum distance for a swipe to be registered
 
+        protected MobileController SetInstance()
+        {
+            if(Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Debug.Log($"Theres 2 of me (Mobile Controller)! Deleting self");
+                Destroy(this);
+            }
+            return Instance;
+        }
         void Awake()
         {
             dragDistance = Screen.height * m_swipeThreashold / 100; //dragDistance is 15% height of the screen
             Input.gyro.enabled = true;
+            SetInstance();
+            Recalibrate();
         }
 
         void Update()
@@ -120,37 +138,41 @@ namespace CadburyRunner.Mobile
             }
 
             //Get the gyro angles in deg
-            m_gyroEuler = Input.gyro.attitude.eulerAngles;
+            m_inputedRotation += Input.gyro.rotationRateUnbiased;
             //Check if the axis is greater then the threashold
-            if (m_gyroEuler.y > m_tiltThreashold.y && m_gyroEuler.y < 360.0f - m_tiltThreashold.y)
+            if (Mathf.Abs(m_inputedRotation.x) > m_tiltThreashold.x)
             {
-                //Check which side we're on
-                if (m_gyroEuler.y <= 180)
+                if (m_inputedRotation.x < 0)
                 {
                     Debug.Log("Tilt Forward");
-                    m_tiltForwardEvent.Invoke((m_gyroEuler.y - m_tiltThreashold.y) * m_tiltSensitivity);
+                    m_tiltForwardEvent.Invoke(m_inputedRotation.x * m_tiltSensitivity);
                 }
-                else
+                else if(m_inputedRotation.x > 0)
                 {
                     Debug.Log("Tilt Back");
-                    m_tiltBackwardEvent.Invoke(-(360 - m_gyroEuler.y - m_tiltThreashold.y) * m_tiltSensitivity);
+                    m_tiltBackwardEvent.Invoke(m_inputedRotation.x * m_tiltSensitivity);
                 }
             }
             //repeat
-            if (m_gyroEuler.x > m_tiltThreashold.x && m_gyroEuler.x < 360.0f - m_tiltThreashold.x)
+            if (Mathf.Abs(m_inputedRotation.y) > m_tiltThreashold.y)
             {
-                float pitch = (m_gyroEuler.x - m_tiltThreashold.x) * m_tiltSensitivity;
-                if (m_gyroEuler.x <= 180)
+                //Check which side we're on
+                if (m_inputedRotation.y > 0)
                 {
                     Debug.Log("Tilt Right");
-                    m_tiltRightEvent.Invoke((m_gyroEuler.x - m_tiltThreashold.x) * m_tiltSensitivity + 0.5f);
+                    m_tiltRightEvent.Invoke(m_inputedRotation.y * m_tiltSensitivity);
                 }
-                else
+                else if (m_inputedRotation.y < 0)
                 {
                     Debug.Log("Tilt Left");
-                    m_tiltLeftEvent.Invoke(-(360 - m_gyroEuler.x - m_tiltThreashold.x) * m_tiltSensitivity + 0.5f);
+                    m_tiltLeftEvent.Invoke(m_inputedRotation.y * m_tiltSensitivity);
                 }
             }
+        }
+        static public void Recalibrate()
+        {
+            Instance.m_inputedRotation = Vector3.zero;
+            Instance.m_inputedRotation.y += 0.5f / Instance.m_tiltSensitivity;
         }
     }
 }
