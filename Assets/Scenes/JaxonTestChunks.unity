@@ -352,8 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_possibleLevelChunks:
-  - {fileID: 7951392615293140663, guid: 6a890ac3532535046a789a8f5781449c, type: 3}
-  - {fileID: 2334620032071090537, guid: 7593bad50545d9c43a370153fca6af0c, type: 3}
+  - {fileID: 475843269495860895, guid: b50c2e1eb31d9d44eb34e45e3a7a4639, type: 3}
 --- !u!4 &2045151197
 Transform:
   m_ObjectHideFlags: 0
