@@ -5,7 +5,6 @@
 ///
 ///</summary>
 
-using System.Diagnostics;
 using UnityEngine;
 
 namespace CadburyRunner.Pickup
@@ -39,7 +38,9 @@ namespace CadburyRunner.Pickup
             // TODO: Add point value to score.
             // -----------------------------------
 
-            if (m_aSystem != null) { m_aSystem.PlaySound(1); }
+            Debug.Log("Add " + m_chocolatePickup.GetPointValue() + " points to the players score.");
+
+            if (m_aSystem != null) { m_aSystem.PlaySound(2, 2); }
             m_aSystem = null;
             m_chocolatePickup = null;
             Destroy(this.gameObject);

@@ -13,5 +13,6 @@ namespace CadburyRunner
     public class ChocolateBar : ScriptableObject
     {
         [SerializeField] private int m_pointValue;
+        public int GetPointValue() { return m_pointValue; }
     }
 }
