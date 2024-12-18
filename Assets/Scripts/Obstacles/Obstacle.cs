@@ -1,7 +1,7 @@
 ///<summary>
 /// Author: Aidan
 ///
-/// Basic obstacle that damages player when collider triggered
+/// Basic obstacle that damages player when collider is triggered and conditions are met
 ///
 ///</summary>
 
