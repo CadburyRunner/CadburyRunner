@@ -41,7 +41,7 @@ namespace CadburyRunner.ScoreSystem
         private void Update()
         {
             //add score when enabled
-            m_score += LevelManager.Instance.CurrentLevelSpeed * Time.deltaTime;
+            m_score += LevelManager.Instance.CurrentLevelSpeed * Time.deltaTime * m_scoreMulti;
         }
 
         /// <summary>
@@ -100,10 +100,12 @@ namespace CadburyRunner.ScoreSystem
         }
 
 
-        // Leave this out for now
-        //public static void ChangeMulti()
-        //{
-        //
-        //}
+        /// <summary>
+        /// change multiplier to set value
+        /// </summary>
+        public void ChangeMulti(float value)
+        {
+            Instance.m_scoreMulti = value;
+        }
     }
 }
