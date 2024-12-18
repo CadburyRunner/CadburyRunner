@@ -16,7 +16,8 @@ namespace CadburyRunner.Pickup
     {
         Points,
         Shield,
-        Magnet
+        Magnet,
+        Multiplier
     }
 
 	public class Pickup : MonoBehaviour
@@ -48,9 +49,22 @@ namespace CadburyRunner.Pickup
                         player.MagnetPickup(m_powerupTime);
                         pickupType = 1;
                         break;
+                    case PickupType.Multiplier:
+                        pickupType = 1;
+                        player.MultiplierPickup(m_powerupTime);
+                        break;
+
                 }
-                
-                ScoreManager.Instance.AddScoreCollectable(m_pointValue);   // Add the "m_pointValue" int from the chocolate bar ScriptableObject to the players score.
+
+                if (pickupType == 0)
+                {
+                    ScoreManager.Instance.AddScoreCollectable(m_pointValue);   // Add the "m_pointValue" int from the chocolate bar ScriptableObject to the players score.
+                                                                               // Also adds 1 point to the collectables list.
+                }
+                else
+                {
+                    ScoreManager.Instance.AddScore(m_pointValue); // Add the "m_pointValue" int from the chocolate bar ScriptableObject to the players score.
+                }
 
                 if (pickupType == 0) { AudioSystem.Instance.PlaySound(2, 2); } // Play the Pickup sound.
                 else { AudioSystem.Instance.PlaySound(2, 3); } // Play the Powerup sound.
