@@ -30,6 +30,8 @@ namespace CadburyRunner
             private bool m_isSliding;
             private bool m_isGrounded;
 
+            public bool lose;
+
             private void Start()
             {
                 m_rb = GetComponent<Rigidbody>();
@@ -45,6 +47,12 @@ namespace CadburyRunner
 
                 if (Input.GetKeyDown(KeyCode.W))
                     Jump();
+
+                if (lose)
+                {
+                    lose = false;
+                    GameManager.Instance.OnLose();
+                }
 #endif
             }
 
