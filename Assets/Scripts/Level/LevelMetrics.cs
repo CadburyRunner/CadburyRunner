@@ -14,6 +14,5 @@ namespace CadburyRunner.Level
         public static float Speed = 5f;
         public static float Acceleration = 0.8f;
         public static float Decceleration = 8f;
-        public static float ObstacleSpawnChance = 0.33f;
     }
 }

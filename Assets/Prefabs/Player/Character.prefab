@@ -152,6 +152,7 @@ MonoBehaviour:
   forcePower: 250
   m_normalCollider: {fileID: 7137171417246446062}
   m_sliderCollider: {fileID: 7137171415663144713}
+  lose: 0
 --- !u!54 &7137171416823435131
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -180,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed364e87517f564eb1d198801fb2e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_tiltThreashold: {x: 0, y: 200}
+  m_tiltThreashold: {x: 100, y: 0}
   m_tiltSensitivity: 0.03
   m_swipeThreashold: 15
   m_holdDelay: 0.3
@@ -252,7 +253,19 @@ MonoBehaviour:
         m_CallState: 2
   m_tapEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7591058696279420775}
+        m_TargetAssemblyTypeName: CadburyRunner.Mobile.MobileController, Assembly-CSharp
+        m_MethodName: Recalibrate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_tiltLeftEvent:
     m_PersistentCalls:
       m_Calls:

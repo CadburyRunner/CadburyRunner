@@ -68,7 +68,7 @@ namespace CadburyRunner.Level
 				spawnPosition = m_nextChunk.EndPoint;
 
 			// create new chunk
-			LevelChunk newChunk = Instantiate(m_possibleLevelChunks[Random.Range(0, m_possibleLevelChunks.Length - 1)], spawnPosition, Quaternion.identity);
+			LevelChunk newChunk = Instantiate(m_possibleLevelChunks[Random.Range(0, m_possibleLevelChunks.Length)], spawnPosition, Quaternion.identity);
 			newChunk.Init();
 
             // set up the old chunks correctly
@@ -104,6 +104,8 @@ namespace CadburyRunner.Level
 				m_currentLevelSpeed = 0;
 				return;
 			}
+
+			m_currentLevelSpeed -= 0.01f;
 
 			StartCoroutine(approachLevelSpeed(speed));
 		}
