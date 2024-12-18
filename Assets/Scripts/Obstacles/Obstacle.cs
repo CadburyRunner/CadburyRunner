@@ -10,14 +10,16 @@ using UnityEngine;
 
 namespace CadburyRunner.Obstacle
 {
-	public class Obstacle : MonoBehaviour
+    public enum ObstacleType
+    {
+        Trip,
+        Slam,
+        Fall,
+    }
+
+    public class Obstacle : MonoBehaviour
 	{
-		public enum ObstacleType
-		{
-			Trip,
-			Slam,
-			Fall,
-		}
+
 
         [SerializeField] private ObstacleType m_type;
 

@@ -6,6 +6,7 @@
 ///</summary>
 
 using UnityEngine;
+using CadburyRunner.Obstacle;
 
 namespace CadburyRunner
 {
@@ -27,7 +28,7 @@ namespace CadburyRunner
                 transform.position = Vector3.Lerp(m_leftFull, m_rightFull, input);
             }
 
-            public void GetHit()
+            public void GetHit(ObstacleType type)
             {
 
             }
