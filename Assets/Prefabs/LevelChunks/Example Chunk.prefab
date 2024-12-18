@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7974604293210467667}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5060864420355734976
 MeshFilter:
@@ -108,7 +108,7 @@ PrefabInstance:
     - target: {fileID: 56406206604192556, guid: 43633411a990e834eb008395c10d3c81,
         type: 3}
       propertyPath: m_Name
-      value: Chunk 01
+      value: Example Chunk
       objectReference: {fileID: 0}
     - target: {fileID: 2035145238862142060, guid: 43633411a990e834eb008395c10d3c81,
         type: 3}
