@@ -1,0 +1,18 @@
+///<summary>
+/// Author:
+///
+///
+///
+///</summary>
+
+using UnityEngine;
+
+namespace CadburyRunner
+{
+	#ROOTNAMESPACEBEGIN#
+	public class #SCRIPTNAME# : MonoBehaviour
+	{
+		#NOTRIM#
+	}
+	#ROOTNAMESPACEEND#
+}
