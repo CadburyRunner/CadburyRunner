@@ -280,6 +280,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7137171416823435130, guid: 1a845a4048ffd194cba7b11e620dd544,
         type: 3}
+      propertyPath: forcePower
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137171416823435130, guid: 1a845a4048ffd194cba7b11e620dd544,
+        type: 3}
       propertyPath: m_leftFull
       value: -3
       objectReference: {fileID: 0}

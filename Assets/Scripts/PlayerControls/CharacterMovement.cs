@@ -82,7 +82,7 @@ namespace CadburyRunner
                     m_sliderCollider.SetActive(false);
 
                     // add force up
-                    m_rb.AddForce(Vector3.up * forcePower, ForceMode.Force);
+                    m_rb.AddForce(Vector3.up * forcePower, ForceMode.Impulse);
 
                     // play sound effect
                     AudioSystem.Instance.PlaySound(1, 0);
