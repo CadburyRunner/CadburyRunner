@@ -38,7 +38,7 @@ namespace CadburyRunner.Pickup
         {
             if (pickupType == 0)
             {
-                ScoreManager.AddScore(m_chocolatePickup.GetPointValue());   // Add the "m_pointValue" int from the chocolate bar ScriptableObject to the players score.
+                ScoreManager.AddScoreCollectable(m_chocolatePickup.GetPointValue());   // Add the "m_pointValue" int from the chocolate bar ScriptableObject to the players score.
 
                 if (m_aSystem != null) { m_aSystem.PlaySound(2, 2); } // Play the Pickup sound.
                 m_aSystem = null;
