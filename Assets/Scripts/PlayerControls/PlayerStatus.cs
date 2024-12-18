@@ -124,7 +124,8 @@ namespace CadburyRunner.Player
 			{
 				m_hasShield = false;
 				m_shieldTime = 0;
-				return true;
+                m_shieldObject.SetActive(false);
+                return true;
 			}
 			return false;
 		}
