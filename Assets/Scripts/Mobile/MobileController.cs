@@ -30,6 +30,7 @@ namespace CadburyRunner.Mobile
         [SerializeField] private UnityEvent<float> m_swipeRightEvent;
         [SerializeField] private UnityEvent<float> m_tapLeftEvent;
         [SerializeField] private UnityEvent<float> m_tapRightEvent;
+        [SerializeField] private UnityEvent m_tapEvent;
         [SerializeField] private UnityEvent<float> m_tiltLeftEvent;
         [SerializeField] private UnityEvent<float> m_tiltRightEvent;
         [SerializeField] private UnityEvent<float> m_tiltForwardEvent;
@@ -98,6 +99,7 @@ namespace CadburyRunner.Mobile
                     else
                     {   //It's a tap as the drag distance is less than 20% of the screen height
                         Debug.Log("Tap");
+                        m_tapEvent.Invoke();
                     }
                 }
                 m_timeHeld += Time.deltaTime;
