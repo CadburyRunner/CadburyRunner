@@ -31,6 +31,99 @@ Transform:
   m_Father: {fileID: 8143860439896872394}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &626511882675240965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5626773542385495037}
+  m_Layer: 0
+  m_Name: 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5626773542385495037
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626511882675240965}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 789311110548680360}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1678207541921522010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6337179340960816584}
+  m_Layer: 0
+  m_Name: 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6337179340960816584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678207541921522010}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 789311110548680360}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2442021011352629180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2700566227806640215}
+  m_Layer: 0
+  m_Name: 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2700566227806640215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2442021011352629180}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 40}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 789311110548680360}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2448928483771122777
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +253,40 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &4694512210105122990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 789311110548680360}
+  m_Layer: 0
+  m_Name: Pickup Positions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &789311110548680360
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4694512210105122990}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5626773542385495037}
+  - {fileID: 6337179340960816584}
+  - {fileID: 2700566227806640215}
+  m_Father: {fileID: 7974604293210467667}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5167066084061317473
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +319,7 @@ Transform:
   - {fileID: 5901562508427965303}
   - {fileID: 6513587914240760959}
   m_Father: {fileID: 7974604293210467667}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8545344117770907673
 GameObject:
@@ -235,7 +362,7 @@ PrefabInstance:
     - target: {fileID: 56406206604192556, guid: 43633411a990e834eb008395c10d3c81,
         type: 3}
       propertyPath: m_Name
-      value: ObstacleTestChunk
+      value: ObjectTestChunk
       objectReference: {fileID: 0}
     - target: {fileID: 2035145238862142060, guid: 43633411a990e834eb008395c10d3c81,
         type: 3}
@@ -294,6 +421,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155923507064004969, guid: 43633411a990e834eb008395c10d3c81,
         type: 3}
+      propertyPath: m_pickupPositions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155923507064004969, guid: 43633411a990e834eb008395c10d3c81,
+        type: 3}
+      propertyPath: m_possiblePickups.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155923507064004969, guid: 43633411a990e834eb008395c10d3c81,
+        type: 3}
       propertyPath: m_obstaclePositions.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -302,6 +439,27 @@ PrefabInstance:
       propertyPath: m_possibleObstacles.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6155923507064004969, guid: 43633411a990e834eb008395c10d3c81,
+        type: 3}
+      propertyPath: m_pickupPositions.Array.data[0]
+      value: 
+      objectReference: {fileID: 5626773542385495037}
+    - target: {fileID: 6155923507064004969, guid: 43633411a990e834eb008395c10d3c81,
+        type: 3}
+      propertyPath: m_pickupPositions.Array.data[1]
+      value: 
+      objectReference: {fileID: 6337179340960816584}
+    - target: {fileID: 6155923507064004969, guid: 43633411a990e834eb008395c10d3c81,
+        type: 3}
+      propertyPath: m_pickupPositions.Array.data[2]
+      value: 
+      objectReference: {fileID: 2700566227806640215}
+    - target: {fileID: 6155923507064004969, guid: 43633411a990e834eb008395c10d3c81,
+        type: 3}
+      propertyPath: m_possiblePickups.Array.data[0]
+      value: 
+      objectReference: {fileID: 6504244108799963340, guid: 2ea797ab7f9c69c4f9c3016708cb1cc5,
+        type: 3}
     - target: {fileID: 6155923507064004969, guid: 43633411a990e834eb008395c10d3c81,
         type: 3}
       propertyPath: m_obstaclePositions.Array.data[0]
