@@ -794,6 +794,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5249f1b93eb9cf649af72c95141d5cf3, type: 3}
   - {fileID: 8300000, guid: 6dc63b4a3a5988d4691f1efba8a06fe1, type: 3}
   - {fileID: 8300000, guid: d45671cc79998fe489acf60eaee41761, type: 3}
+  - {fileID: 8300000, guid: 4220d7412ff4bef40af99f1fc1ef7d86, type: 3}
   m_soundSources:
   - {fileID: 1869231836747867481}
   - {fileID: 1869231836747867476}
