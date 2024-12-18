@@ -5,21 +5,15 @@
 ///
 ///</summary>
 
+using CadburyRunner.Level;
 using UnityEngine;
 
 namespace CadburyRunner.ScoreSystem
 {
 	public class ScoreManager : MonoBehaviour
 	{
-		private static ScoreManager Instance;
-
-        private static float m_score;
-        private static float m_scoreMulti = 1f;
-
-        private static int m_collectableCount = 0;
-
-        public static float Score => m_score;
-        public static int CollectableCount => m_collectableCount;
+        #region Singleton
+        private static ScoreManager Instance;
 
         private void Awake()
         {
@@ -34,27 +28,36 @@ namespace CadburyRunner.ScoreSystem
                 DontDestroyOnLoad(this);
             }
         }
+        #endregion
+
+        private float m_score;
+        private float m_scoreMulti = 1f;
+
+        private int m_collectableCount = 0;
+
+        public float Score => m_score;
+        public int CollectableCount => m_collectableCount;
 
         private void Update()
         {
             //add score when enabled
-            m_score += 10f * Time.deltaTime;
+            m_score += LevelManager.Instance.CurrentLevelSpeed * Time.deltaTime;
         }
 
         /// <summary>
         /// adds an amount of score to the points
         /// </summary>
         /// <param name="scoreToAdd"></param>
-        public static void AddScore(float scoreToAdd)
+        public void AddScore(float scoreToAdd)
         {
-            if (Instance) m_score += scoreToAdd * m_scoreMulti;
+            m_score += scoreToAdd * m_scoreMulti;
         }
 
         /// <summary>
         /// adds an amount of score to the points, also adds one to the collectable tally
         /// </summary>
         /// <param name="scoreToAdd"></param>
-        public static void AddScoreCollectable(float scoreToAdd)
+        public void AddScoreCollectable(float scoreToAdd)
         {
             if (Instance)
             {
@@ -67,7 +70,7 @@ namespace CadburyRunner.ScoreSystem
         /// <summary>
         /// Sets all scoring values to zero
         /// </summary>
-        public static void ResetScore()
+        public void ResetScore()
         {
             m_score = 0f;
             m_scoreMulti = 1f;
@@ -77,7 +80,7 @@ namespace CadburyRunner.ScoreSystem
         /// <summary>
         /// Removes instance and resets score
         /// </summary>
-        public static void Kill()
+        public void Kill()
         {
             if (Instance)
             {
@@ -92,9 +95,9 @@ namespace CadburyRunner.ScoreSystem
         /// Sets whether the manager should constantly add score.
         /// </summary>
         /// <param name="AddScore">If true constantly add score</param>
-        public static void SetEnabled(bool AddScore)
+        public void SetEnabled(bool AddScore)
         {
-            if (Instance) Instance.enabled = AddScore;
+            Instance.enabled = AddScore;
         }
 
 
