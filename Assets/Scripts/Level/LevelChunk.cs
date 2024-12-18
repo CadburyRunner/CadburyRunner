@@ -60,7 +60,8 @@ namespace CadburyRunner.Level
 			}
         }
 
-        private void OnDrawGizmos()
+#if UNITY_EDITOR
+		private void OnDrawGizmos()
         {
 			Handles.color = Color.magenta;
 			// draw pickup positions
@@ -76,5 +77,6 @@ namespace CadburyRunner.Level
 				Handles.DrawWireCube(m_obstaclePositions[i].position, Vector3.one);
             }
         }
-    }
+#endif
+	}
 }
