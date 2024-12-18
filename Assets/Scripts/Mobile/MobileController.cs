@@ -138,9 +138,10 @@ namespace CadburyRunner.Mobile
             }
 
             //Get the gyro angles in deg
-            m_inputedRotation += Input.gyro.rotationRateUnbiased;
+            Vector3 newRate = Input.gyro.rotationRateUnbiased;
+            m_inputedRotation += newRate;
             //Check if the axis is greater then the threashold
-            if (Mathf.Abs(m_inputedRotation.x) > m_tiltThreashold.x)
+            if (Mathf.Abs(newRate.x) > m_tiltThreashold.x)
             {
                 if (m_inputedRotation.x < 0)
                 {
@@ -154,7 +155,7 @@ namespace CadburyRunner.Mobile
                 }
             }
             //repeat
-            if (Mathf.Abs(m_inputedRotation.y) > m_tiltThreashold.y)
+            if (Mathf.Abs(newRate.y) > m_tiltThreashold.y)
             {
                 //Check which side we're on
                 if (m_inputedRotation.y > 0)
