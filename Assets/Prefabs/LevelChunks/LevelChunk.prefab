@@ -46,9 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf40e8a877fbe354a8779b171e550ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_endPoint: {fileID: 5591280280432924459}
+  m_pickupPositions: []
+  m_possiblePickups: []
   m_obstaclePositions: []
   m_possibleObstacles: []
-  m_endPoint: {fileID: 5591280280432924459}
 --- !u!65 &8057475262243657851
 BoxCollider:
   m_ObjectHideFlags: 0

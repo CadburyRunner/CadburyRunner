@@ -152,6 +152,7 @@ MonoBehaviour:
   forcePower: 250
   m_normalCollider: {fileID: 7137171417246446062}
   m_sliderCollider: {fileID: 7137171415663144713}
+  lose: 0
 --- !u!54 &7137171416823435131
 Rigidbody:
   m_ObjectHideFlags: 0

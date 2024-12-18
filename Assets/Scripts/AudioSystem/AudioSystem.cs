@@ -5,14 +5,30 @@
 ///
 ///</summary>
 
+using CadburyRunner.Level;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace CadburyRunner.AudioSystem
+namespace CadburyRunner.Audio
 {
 	public class AudioSystem : MonoBehaviour
 	{
-		[SerializeField] private AudioClip[] m_soundClips;			// Array of all AudioClips.
+        #region Singleton
+        public static AudioSystem Instance;
+        private void Awake()
+        {
+            if (!Instance)
+                Instance = this;
+            else
+            {
+                Destroy(gameObject);
+                DontDestroyOnLoad(gameObject);
+            }
+
+        }
+        #endregion
+
+        [SerializeField] private AudioClip[] m_soundClips;			// Array of all AudioClips.
 		[SerializeField] private AudioSource[] m_soundSources;      // Array of all AudioSources.
 
 		// Plays the specified sound using the "soundIndex" int passed through.

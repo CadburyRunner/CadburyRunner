@@ -13,7 +13,7 @@ namespace CadburyRunner.ScoreSystem
 	public class ScoreManager : MonoBehaviour
 	{
         #region Singleton
-        private static ScoreManager Instance;
+        public static ScoreManager Instance;
 
         private void Awake()
         {
@@ -65,7 +65,6 @@ namespace CadburyRunner.ScoreSystem
                 m_collectableCount++;
             }
         }
-
 
         /// <summary>
         /// Sets all scoring values to zero

@@ -32,7 +32,8 @@ namespace CadburyRunner.Level
 			for (int i = 0; i < m_pickupPositions.Length; i++)
 			{
 				// roll to create pickup
-				Instantiate(m_possiblePickups[Random.Range(0, m_possiblePickups.Length)], m_pickupPositions[i].transform);
+				if (Random.value <= LevelMetrics.PickupSpawnChance)
+					Instantiate(m_possiblePickups[Random.Range(0, m_possiblePickups.Length)], m_pickupPositions[i].transform);
 			}
 
 			// spawn obstacles
