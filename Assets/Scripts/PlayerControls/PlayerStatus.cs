@@ -7,21 +7,27 @@
 
 using CadburyRunner.Level;
 using CadburyRunner.Obstacle;
-using System.Runtime.CompilerServices;
+using CadburyRunner.ScoreSystem;
 using UnityEngine;
 
 namespace CadburyRunner.Player
 {
 	public class PlayerStatus : MonoBehaviour
 	{
+		[Header("Magnet Variables")]
 		[SerializeField] private SphereCollider m_pickupRadius;
 		[SerializeField] private float m_pickupRadiusNormal;
 		[SerializeField] private float m_pickupRadiusMagnet;
+		[SerializeField] private GameObject m_magnetObject;
 		private bool m_hasMagnet;
 		private float m_magnetTime;
-
-		private bool m_hasShield = false;
+		[Header("Shield Variables")]
+        [SerializeField] private GameObject m_shieldObject;
+        private bool m_hasShield = false;
 		private float m_shieldTime;
+		[Header("Point Multiplier")]
+		private bool m_hasMultiplier = false;
+		private float m_multiplierTime;
 
 
 		private bool m_tripped = false;
@@ -52,6 +58,7 @@ namespace CadburyRunner.Player
 				else 
 				{
 					m_hasMagnet = false;
+					m_magnetObject.SetActive(false);
                     m_pickupRadius.radius = m_pickupRadiusNormal;
                 }
 			}
@@ -66,7 +73,23 @@ namespace CadburyRunner.Player
 				else
 				{
 					m_hasShield = false;
+					m_shieldObject.SetActive(false);
 				}
+			}
+
+			//check to remove multiplier powerup
+			if (m_hasMultiplier)
+			{
+				if (m_multiplierTime >= 0)
+				{
+					m_multiplierTime -= Time.deltaTime;
+
+				}
+				else
+				{
+					m_hasMultiplier = false;
+                    ScoreManager.Instance.ChangeMulti(1f);
+                }
 			}
         }
 
@@ -84,7 +107,7 @@ namespace CadburyRunner.Player
 			{
 				//if player hasn't tripped set tripped to true and lower speed
 				m_tripped = true;
-				LevelManager.Instance.SetLevelSpeed(1f);
+				LevelManager.Instance.SetLevelSpeed(LevelMetrics.Speed / 8f);
 			}
 		}
 
@@ -96,6 +119,7 @@ namespace CadburyRunner.Player
 		{
 			m_hasMagnet = true;
 			m_magnetTime = time;
+			m_magnetObject.SetActive(true);
 			m_pickupRadius.radius = m_pickupRadiusMagnet;
 		}
 		/// <summary>
@@ -106,7 +130,8 @@ namespace CadburyRunner.Player
 		{
 			m_hasShield = true;
 			m_shieldTime = time;
-		}
+            m_shieldObject.SetActive(true);
+        }
 		/// <summary>
 		/// Check if the shield is active and resets it
 		/// </summary>
@@ -117,10 +142,23 @@ namespace CadburyRunner.Player
 			{
 				m_hasShield = false;
 				m_shieldTime = 0;
-				return true;
+                m_shieldObject.SetActive(false);
+                return true;
 			}
 			return false;
 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="type"></param>
+		public void MultiplierPickup(float time)
+		{
+			m_hasMultiplier = true;
+			m_multiplierTime = time;
+			ScoreManager.Instance.ChangeMulti(2f);
+		}
+
 
         public void Die(ObstacleType type)
 		{
