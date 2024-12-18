@@ -89,7 +89,7 @@ namespace CadburyRunner.Player
 			{
 				//if player hasn't tripped set tripped to true and lower speed
 				m_tripped = true;
-				LevelManager.Instance.SetLevelSpeed(1f);
+				LevelManager.Instance.SetLevelSpeed(LevelMetrics.Speed / 8f);
 			}
 		}
 
