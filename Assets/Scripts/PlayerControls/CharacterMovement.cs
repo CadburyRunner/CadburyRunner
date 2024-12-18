@@ -39,7 +39,7 @@ namespace CadburyRunner
             {
                 m_isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, LayerMask.NameToLayer("Ground"));
 #if UNITY_EDITOR
-                SideToSideMovement(m_input);
+                //SideToSideMovement(m_input);
                 if (Input.GetKeyDown(KeyCode.S))
                     Slide();
 
