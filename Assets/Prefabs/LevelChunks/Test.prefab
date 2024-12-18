@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2431877303563727242}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.75, y: 1, z: 14.5}
+  m_LocalPosition: {x: 2.75, y: 1, z: 14.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -184,7 +184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6237763853145832343}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.0299997, y: 1, z: 1.5}
+  m_LocalPosition: {x: -0.029999733, y: 1, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -215,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7582608283585510448}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.4700003, y: 1, z: 35}
+  m_LocalPosition: {x: -0.77999973, y: 1, z: 35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -246,7 +246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7920581873564597438}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.7799997, y: 1, z: 18.25}
+  m_LocalPosition: {x: -2.2799997, y: 1, z: 18.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -328,7 +328,7 @@ PrefabInstance:
     - target: {fileID: 6155923507064004969, guid: 43633411a990e834eb008395c10d3c81,
         type: 3}
       propertyPath: m_possibleObstacles.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6155923507064004969, guid: 43633411a990e834eb008395c10d3c81,
         type: 3}
@@ -359,7 +359,19 @@ PrefabInstance:
         type: 3}
       propertyPath: m_possibleObstacles.Array.data[0]
       value: 
-      objectReference: {fileID: 3336090510452735612, guid: 560daa39507bd2847abfe9ebf665e8e2,
+      objectReference: {fileID: 2619796797891041501, guid: 2c949ba34676aa84eb05f7e5884b9184,
+        type: 3}
+    - target: {fileID: 6155923507064004969, guid: 43633411a990e834eb008395c10d3c81,
+        type: 3}
+      propertyPath: m_possibleObstacles.Array.data[1]
+      value: 
+      objectReference: {fileID: 910074577489018376, guid: 529fa298f2cdaac45a1c208d1438858e,
+        type: 3}
+    - target: {fileID: 6155923507064004969, guid: 43633411a990e834eb008395c10d3c81,
+        type: 3}
+      propertyPath: m_possibleObstacles.Array.data[2]
+      value: 
+      objectReference: {fileID: 6247445309533679744, guid: 560daa39507bd2847abfe9ebf665e8e2,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43633411a990e834eb008395c10d3c81, type: 3}
