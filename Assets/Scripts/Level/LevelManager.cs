@@ -105,6 +105,8 @@ namespace CadburyRunner.Level
 				return;
 			}
 
+			m_currentLevelSpeed -= 0.01f;
+
 			StartCoroutine(approachLevelSpeed(speed));
 		}
 

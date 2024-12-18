@@ -6,8 +6,7 @@
 ///</summary>
 
 using UnityEngine;
-using CadburyRunner.Movement;
-using CadburyRunner.ScoreSystem;
+using CadburyRunner.Player;
 
 namespace CadburyRunner.Obstacle
 {
@@ -29,8 +28,27 @@ namespace CadburyRunner.Obstacle
             //if player colliding
             if (other.CompareTag("Player"))
             {
-                //deal damage and parse obstacle type to player
-                //other.GetComponent<CharacterMovement>().GetHit(m_type);
+                //gets player status component in parent
+                PlayerStatus status = other.GetComponentInParent<PlayerStatus>();
+
+                switch (m_type)
+                {
+                    case ObstacleType.Trip:
+
+                        status.Trip();
+
+                        break;
+                    case ObstacleType.Slam:
+
+                        status.Die(ObstacleType.Slam);
+
+                        break;
+                    case ObstacleType.Fall:
+
+                        status.Die(ObstacleType.Fall);
+
+                        break;
+                }
             }
         }
 
