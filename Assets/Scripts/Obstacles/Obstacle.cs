@@ -19,12 +19,10 @@ namespace CadburyRunner.Obstacle
 
     public class Obstacle : MonoBehaviour
 	{
-
         [SerializeField] private ObstacleType m_type;
 
-        public void OnTriggerEnter(Collider other)
+        public virtual void OnTriggerEnter(Collider other)
         {
-
             //if player colliding
             if (other.CompareTag("Player"))
             {
@@ -51,7 +49,7 @@ namespace CadburyRunner.Obstacle
                 }
             }
         }
-
+#if UNITY_EDITOR
         #region Scrapped
 
         //[System.Serializable]
@@ -81,5 +79,6 @@ namespace CadburyRunner.Obstacle
         //	}
         //}
         #endregion
+#endif
     }
 }
