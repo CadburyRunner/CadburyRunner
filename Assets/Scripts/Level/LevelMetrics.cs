@@ -11,8 +11,8 @@ namespace CadburyRunner.Level
 {
     public static class LevelMetrics
     {
-        public static float Speed = 5f;
-        public static float Acceleration = 0.8f;
-        public static float Decceleration = 8f;
+        public static float Speed = 9f;
+        public static float Acceleration = 0.5f * Speed;
+        public static float Decceleration = 1.1f * Speed;
     }
 }
