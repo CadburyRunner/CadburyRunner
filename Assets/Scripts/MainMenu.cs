@@ -13,7 +13,7 @@ namespace CadburyRunner
 	{
 		public void StartGame()
 		{
-			GameManager.Instance.LoadScene("PlayerControllerTesting");
+			GameManager.Instance.LoadScene("RunningLevel");
 		}
 
 		public void Quit()
