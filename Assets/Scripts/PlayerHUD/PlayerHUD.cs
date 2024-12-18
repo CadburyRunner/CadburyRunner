@@ -28,8 +28,8 @@ namespace CadburyRunner.PlayerHUD
 
         private void Update()
         {
-            m_scoreText.text = ((int)ScoreManager.Score).ToString();
-            m_collectableText.text = ScoreManager.CollectableCount + " X";
+            m_scoreText.text = ((int)ScoreManager.Instance.Score).ToString();
+            m_collectableText.text = ScoreManager.Instance.CollectableCount + " X";
         }
     }
 }
