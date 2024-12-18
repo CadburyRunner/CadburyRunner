@@ -47,8 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_endPoint: {fileID: 5591280280432924459}
+  m_pickupSpawnChance: 0.8
   m_pickupPositions: []
   m_possiblePickups: []
+  m_obstacleSpawnChance: 0.33
   m_obstaclePositions: []
   m_possibleObstacles: []
 --- !u!65 &8057475262243657851
