@@ -1,5 +1,5 @@
 ///<summary>
-/// Author: Jaxon Haldane
+/// Author: Jaxon Haldane & Halen
 ///
 /// Scene loading and menu methods
 ///
@@ -34,7 +34,14 @@ namespace CadburyRunner
         public void PauseTime() { Time.timeScale = 0; m_pauseCanvas.SetActive(true); }
         public void UnPauseTime() { Time.timeScale = 1; m_pauseCanvas.SetActive(false);}
 
-        public void Quit() { Application.Quit(); }
+        public void Restart() { LoadScene(SceneManager.GetActiveScene().name); }
+        public void Quit()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+            Application.Quit();
+        }
 
         public void LoadScene(string name) 
         {
