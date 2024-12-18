@@ -1,7 +1,7 @@
 ///<summary>
 /// Author: Halen
 ///
-/// Constants for level generation
+/// Constants for level generation.
 ///
 ///</summary>
 
