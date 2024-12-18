@@ -13,20 +13,27 @@ namespace CadburyRunner.Mobile
 	public class MobileController : MonoBehaviour
 	{
         [Min(0)]
+        [Tooltip("The angle in degrees for a tilt input to be registered.")]
 		[SerializeField] private Vector2 m_tiltThreashold = new(10f, 10f);
         [Min(0)]
         [SerializeField] private float m_tiltSensitivity = 1;
         private Vector3 m_gyroEuler;
+        [Tooltip("The distance in pixels that a swipe has to be to count as a swipe input.")]
 		[SerializeField] private float m_swipeThreashold = 15f;
+        [Tooltip("The time to wait before reading a tap input as a held input.")]
+        [SerializeField] private float m_holdDelay = 0.3f;
+        private float m_timeHeld = 0f;
 
+        [SerializeField] private UnityEvent<float> m_swipeUpEvent;
+        [SerializeField] private UnityEvent<float> m_swipeDownEvent;
+        [SerializeField] private UnityEvent<float> m_swipeLeftEvent;
+        [SerializeField] private UnityEvent<float> m_swipeRightEvent;
+        [SerializeField] private UnityEvent<float> m_tapLeftEvent;
+        [SerializeField] private UnityEvent<float> m_tapRightEvent;
         [SerializeField] private UnityEvent<float> m_tiltLeftEvent;
         [SerializeField] private UnityEvent<float> m_tiltRightEvent;
         [SerializeField] private UnityEvent<float> m_tiltForwardEvent;
         [SerializeField] private UnityEvent<float> m_tiltBackwardEvent;
-        [SerializeField] private UnityEvent<float> m_swipeLeftEvent;
-        [SerializeField] private UnityEvent<float> m_swipeRightEvent;
-        [SerializeField] private UnityEvent<float> m_swipeUpEvent;
-        [SerializeField] private UnityEvent<float> m_swipeDownEvent;
 
         private Vector3 fp;   //First touch position
         private Vector3 lp;   //Last touch position
@@ -47,6 +54,7 @@ namespace CadburyRunner.Mobile
                 {
                     fp = touch.position;
                     lp = touch.position;
+                    m_timeHeld = 0;
                 }
                 else if (touch.phase == TouchPhase.Moved) // update the last position based on where they moved
                 {
@@ -92,7 +100,23 @@ namespace CadburyRunner.Mobile
                         Debug.Log("Tap");
                     }
                 }
+                m_timeHeld += Time.deltaTime;
+                if (m_timeHeld >= m_holdDelay)
+                {
+                    //Tap inputs - run constantly
+                    if (touch.position.x < Screen.width / 2)
+                    {
+                        Debug.Log("Left tap");
+                        m_tapLeftEvent.Invoke(-1);
+                    }
+                    else
+                    {
+                        Debug.Log("Right tap");
+                        m_tapRightEvent.Invoke(-1);
+                    }
+                }
             }
+
             //Get the gyro angles in deg
             m_gyroEuler = Input.gyro.attitude.eulerAngles;
             //Check if the axis is greater then the threashold
@@ -124,10 +148,6 @@ namespace CadburyRunner.Mobile
                     m_tiltLeftEvent.Invoke(-(360 - m_gyroEuler.x - m_tiltThreashold.x) * m_tiltSensitivity);
                 }
             }
-        }
-        protected void OnGUI()
-        {
-            GUILayout.Label("input.gyro.attitude: " + Input.gyro.attitude.eulerAngles);
         }
     }
 }
