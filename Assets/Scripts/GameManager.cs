@@ -34,7 +34,7 @@ namespace CadburyRunner
         public void PauseTime() { Time.timeScale = 0; m_pauseCanvas.SetActive(true); }
         public void UnPauseTime() { Time.timeScale = 1; m_pauseCanvas.SetActive(false);}
 
-        public void Restart() { LoadScene(SceneManager.GetActiveScene().name); }
+        public void Restart() { LoadScene(SceneManager.GetActiveScene().name); Time.timeScale = 1; }
         public void Quit()
         {
 #if UNITY_EDITOR
@@ -46,6 +46,7 @@ namespace CadburyRunner
         public void LoadScene(string name) 
         {
             StartCoroutine(AsyncLoad(name, name != "MainMenu"));
+            Time.timeScale = 1;
         }
 
         private IEnumerator AsyncLoad(string name, bool showPauseMenu = false)
@@ -63,6 +64,7 @@ namespace CadburyRunner
 
         public void OnLose()
         {
+            Time.timeScale = 0;
             m_loseCanvas.gameObject.SetActive(true);
         }
 
