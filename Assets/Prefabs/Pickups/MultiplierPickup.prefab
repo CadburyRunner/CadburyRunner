@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2754a6a160ea4034e93d881ecc90ece4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_model: {fileID: 2792287235593837435, guid: 13d2bb417c89c0849bf54d0f8be87bd4, type: 3}
+  m_model: {fileID: 8862299195644669681, guid: c8aa23035c371f14ab5fc11a0cda89b7, type: 3}
   m_pointValue: 20
   m_type: 3
   m_powerupTime: 10

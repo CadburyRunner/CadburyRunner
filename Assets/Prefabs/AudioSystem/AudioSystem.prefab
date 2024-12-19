@@ -754,7 +754,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1869231837806525049}
-  - component: {fileID: 1869231837806525048}
   m_Layer: 0
   m_Name: AudioSystem
   m_TagString: Untagged
@@ -778,24 +777,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1869231837806525048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1869231837806525051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da89d72647638204aab9cdb692854c3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_soundClips:
-  - {fileID: 8300000, guid: 5249f1b93eb9cf649af72c95141d5cf3, type: 3}
-  - {fileID: 8300000, guid: 6dc63b4a3a5988d4691f1efba8a06fe1, type: 3}
-  - {fileID: 8300000, guid: d45671cc79998fe489acf60eaee41761, type: 3}
-  - {fileID: 8300000, guid: 4220d7412ff4bef40af99f1fc1ef7d86, type: 3}
-  m_soundSources:
-  - {fileID: 1869231836747867481}
-  - {fileID: 1869231836747867476}
-  - {fileID: 1869231836747867479}
