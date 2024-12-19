@@ -185,10 +185,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_possibleLevelChunks:
-  - {fileID: 2334620032071090537, guid: 7593bad50545d9c43a370153fca6af0c, type: 3}
-  - {fileID: 7951392615293140663, guid: 6a890ac3532535046a789a8f5781449c, type: 3}
-  - {fileID: 475843269495860895, guid: b50c2e1eb31d9d44eb34e45e3a7a4639, type: 3}
-  - {fileID: 6860495514335193981, guid: 5949f2ec90737ad4483e199242d412f4, type: 3}
+
+  - {fileID: 6124892013323537960, guid: 69c569b11adcf1d43989322cbab9bbcb, type: 3}
+  - {fileID: 1561709863004646310, guid: 64b1132e9befaca4d8a350fb505c98b8, type: 3}
+  - {fileID: 4322282320323908632, guid: fa4372adc5eadaf4493f8deaa90228ce, type: 3}
 --- !u!4 &725886319
 Transform:
   m_ObjectHideFlags: 0
