@@ -25,7 +25,6 @@ namespace CadburyRunner.ScoreSystem
             else
             {
                 Instance = this;
-                DontDestroyOnLoad(this);
             }
         }
         #endregion
