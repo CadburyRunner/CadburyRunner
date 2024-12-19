@@ -58,17 +58,17 @@ namespace CadburyRunner.Pickup
 
                 if (pickupType == 0)
                 {
+                    SFXController.Instance.PlaySoundClip("Pickup", "Chocolate", AudioTrack.Pickup);
                     ScoreManager.Instance.AddScoreCollectable(m_pointValue);   // Add the "m_pointValue" int from the chocolate bar ScriptableObject to the players score.
                                                                                // Also adds 1 point to the collectables list.
                 }
                 else
                 {
+                    SFXController.Instance.PlaySoundClip("Pickup", "Powerup", AudioTrack.Pickup);
                     ScoreManager.Instance.AddScore(m_pointValue); // Add the "m_pointValue" int from the chocolate bar ScriptableObject to the players score.
                 }
 
-                if (pickupType == 0) { AudioSystem.Instance.PlaySound(2, 2); } // Play the Pickup sound.
-                else { AudioSystem.Instance.PlaySound(2, 3); } // Play the Powerup sound.
-
+                
                 Destroy(gameObject); // Destroy the pickup.
             }
         }

@@ -18,7 +18,6 @@ namespace CadburyRunner.Level
 		[Tooltip("Appears Pink in the scene view.")]
 		[SerializeField, Range(0, 1)] private float m_pickupSpawnChance = 0.8f;
 		[SerializeField] private Transform[] m_pickupPositions;
-		[SerializeField] private GameObject[] m_possiblePickups;
 
 		[Header("Obstacle Spawning")]
 		[Tooltip("Appears Blue in the scene view.")]
@@ -34,8 +33,12 @@ namespace CadburyRunner.Level
 			for (int i = 0; i < m_pickupPositions.Length; i++)
 			{
 				// roll to create pickup
+				// if get within spawn chance, spawn a choc bar
+				// if get outside of spawn chance, spawn a powerup
 				if (Random.value <= m_pickupSpawnChance)
-					Instantiate(m_possiblePickups[Random.Range(0, m_possiblePickups.Length)], m_pickupPositions[i].transform);
+					Instantiate(LevelManager.Instance.Pickups[0], m_pickupPositions[i]);
+				else
+					Instantiate(LevelManager.Instance.Pickups[Random.Range(1, LevelManager.Instance.Pickups.Length)], m_pickupPositions[i]);
 			}
 
 			// spawn obstacles
