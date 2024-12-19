@@ -16,16 +16,18 @@ namespace CadburyRunner.Player
 	public class PlayerStatus : MonoBehaviour
 	{
 		[Header("Magnet Variables")]
+		[SerializeField] private GameObject[] m_magnetObjects;
 		[SerializeField] private SphereCollider m_pickupRadius;
 		[SerializeField] private float m_pickupRadiusNormal;
 		[SerializeField] private float m_pickupRadiusMagnet;
-		[SerializeField] private GameObject m_magnetObject;
 		private bool m_hasMagnet;
 		private float m_magnetTime;
+
 		[Header("Shield Variables")]
         [SerializeField] private GameObject m_shieldObject;
         private bool m_hasShield = false;
 		private float m_shieldTime;
+
 		[Header("Point Multiplier")]
 		private bool m_hasMultiplier = false;
 		private float m_multiplierTime;
@@ -34,9 +36,11 @@ namespace CadburyRunner.Player
 
 
 		private bool m_tripped = false;
+		private CharacterAnimationController m_anim;
 
         private void Start()
         {
+			m_anim = GetComponentInChildren<CharacterAnimationController>();
 			m_pickupRadius.radius = m_pickupRadiusNormal;
         }
 
@@ -61,8 +65,9 @@ namespace CadburyRunner.Player
 				else 
 				{
 					m_hasMagnet = false;
-					m_magnetObject.SetActive(false);
-                    m_playerHud.HidePowerup(0);
+          m_playerHud.HidePowerup(0);
+					foreach (GameObject obj in m_magnetObjects)
+						obj.SetActive(false);
                     m_pickupRadius.radius = m_pickupRadiusNormal;
                 }
 			}
@@ -125,8 +130,9 @@ namespace CadburyRunner.Player
 		{
 			m_hasMagnet = true;
 			m_magnetTime = time;
-			m_magnetObject.SetActive(true);
 			m_playerHud.ShowPowerup(0, time);
+			foreach (GameObject obj in m_magnetObjects)
+				obj.SetActive(true);
 			m_pickupRadius.radius = m_pickupRadiusMagnet;
 		}
 		/// <summary>
@@ -169,18 +175,14 @@ namespace CadburyRunner.Player
             ScoreManager.Instance.ChangeMulti(2f);
 		}
 
-
         public void Die(ObstacleType type)
 		{
-			switch (type)
-			{
-				case ObstacleType.Trip:
-					break;
-				case ObstacleType.Slam:
-					break;
-				case ObstacleType.Fall:
-					break;
-			}
+			m_hasMagnet = false;
+			m_hasShield = false;
+			m_hasMultiplier = false;
+			
+			m_anim.Death(type);
+
 			//show loss screen
             GameManager.Instance.OnLose();
         }
