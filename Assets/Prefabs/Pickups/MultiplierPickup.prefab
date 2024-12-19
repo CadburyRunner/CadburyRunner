@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2115557124532739847}
   - component: {fileID: 1839914359236078656}
   m_Layer: 0
-  m_Name: PointPickup
+  m_Name: MultiplierPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2754a6a160ea4034e93d881ecc90ece4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_model: {fileID: 6121206704767157895, guid: 5a0a3ec559e723e45a7e9ee5b34546b4, type: 3}
-  m_pointValue: 10
-  m_type: 0
+  m_model: {fileID: 2792287235593837435, guid: 13d2bb417c89c0849bf54d0f8be87bd4, type: 3}
+  m_pointValue: 20
+  m_type: 3
   m_powerupTime: 10
 --- !u!135 &1839914359236078656
 SphereCollider:

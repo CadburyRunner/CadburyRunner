@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4032652074974591695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4032652074974591729}
+  - component: {fileID: 4032652074974591728}
+  m_Layer: 0
+  m_Name: SFXController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4032652074974591729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032652074974591695}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.218973, y: -2.1186552, z: 7.3334804}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4032652074974591728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032652074974591695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a37ec4d5c493a53439288ac9a3f022a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_clipCollections:
+  - m_collectionName: Pickup
+    m_soundClips:
+    - m_clipName: Chocolate
+      m_audioClip: {fileID: 8300000, guid: d45671cc79998fe489acf60eaee41761, type: 3}
+    - m_clipName: Powerup
+      m_audioClip: {fileID: 8300000, guid: eb447e15d413b3747bd9ec22b977dd2d, type: 3}
+  - m_collectionName: PlayerMove
+    m_soundClips:
+    - m_clipName: Slide
+      m_audioClip: {fileID: 8300000, guid: 5249f1b93eb9cf649af72c95141d5cf3, type: 3}
+    - m_clipName: Jump
+      m_audioClip: {fileID: 8300000, guid: 6dc63b4a3a5988d4691f1efba8a06fe1, type: 3}
+  - m_collectionName: Trip
+    m_soundClips:
+    - m_clipName: 1
+      m_audioClip: {fileID: 8300000, guid: defd8759011dd4f44b45f65acc5935ca, type: 3}
+    - m_clipName: 2
+      m_audioClip: {fileID: 8300000, guid: cd643d9ed0f92fe4e8c573ff2daf9ec5, type: 3}
+  - m_collectionName: Collision Hard
+    m_soundClips:
+    - m_clipName: 1
+      m_audioClip: {fileID: 8300000, guid: aaa45375e055d4a41bb61a29ba1fee95, type: 3}
+    - m_clipName: 2
+      m_audioClip: {fileID: 8300000, guid: 305f92079bf66484e952a87369eff165, type: 3}
+  - m_collectionName: Collision Metal
+    m_soundClips:
+    - m_clipName: 1
+      m_audioClip: {fileID: 8300000, guid: 928ed2af63a52e54c8290d855e8f03b7, type: 3}
+    - m_clipName: 2
+      m_audioClip: {fileID: 8300000, guid: b3b2d04cf37f00f42a05282c2b6a570c, type: 3}
+  - m_collectionName: Footsteps
+    m_soundClips:
+    - m_clipName: 1
+      m_audioClip: {fileID: 8300000, guid: 23ab1e70e64570849b11783ee193255d, type: 3}
+    - m_clipName: 2
+      m_audioClip: {fileID: 8300000, guid: 14e6f7dd5c0722949bb8173e67a7e813, type: 3}
