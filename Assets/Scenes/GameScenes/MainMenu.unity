@@ -156,7 +156,7 @@ RectTransform:
   m_Father: {fileID: 1392485476}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.77238077}
+  m_AnchorMin: {x: 0, y: 0.8402456}
   m_AnchorMax: {x: 1, y: 0.9999999}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -486,7 +486,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 132105862}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22761925
+  m_Size: 0.15975441
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -564,8 +564,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -1611.7556}
-  m_SizeDelta: {x: 0, y: 3223.5115}
+  m_AnchoredPosition: {x: 0, y: -2498.2168}
+  m_SizeDelta: {x: 0, y: 4996.4336}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &354309949
 MonoBehaviour:
@@ -587,65 +587,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Credits
-
-    ------------------
-
-    Artists:
-
-
-    Yash Chadha - Environment
-    and Tech Artist
-
-
-    Keith Lawton - Environment Artist
-
-
-    Chris Murphy -
-    Environment Artist
-
-
-    Candice Wilson
-
-
-    Jedd Strawbridge
-
-
-    Zoe Turner
-    Davey - Environment Artist
-
-
-    Luke Bourne
-
-
-    Designer:
-
-
-    Henry Croney
-
-
-    Programmers:
-
-
-    Halen
-    Finlay - Co-Producer, Level Generation programming
-
-
-    Aidan Majcen - UI Programming
-
-
-    Emanuel
-    Wiliams - Co-Producer, Audio Co-Director, Audio Systems Programmer
-
-
-    Jaxon
-    Haldane - Player Programmer, Obstacle programming
-
-
-    Jackson Lucas - Controls
-    Programmer
-
-'
+  m_text: "Credits\n------------------\nArtists:\n\nYash Chadha - Environment and
+    Tech Artist\n\nKeith Lawton - Environment Artist\n\nChris Murphy - Environment
+    Artist\n\nCandice Wilson - Character modeling and Environment Artist \n\nJedd
+    Strawbridge - Environment Artist\n\nZoe Turner Davey - Environment Artist\n\nLuke
+    Bourne - Animation and Environment Artist\n\nDesigner:\n\nHenry Croney (from
+    the hit game Redline) - Sound Design, Documentation\n\nProgrammers:\n\nHalen
+    Finlay - Co-Producer, Level Generation programming\n\nAidan Majcen - UI Programming,
+    Game Logic Programming\n\nEmanuel Wiliams - Co-Producer, Audio Co-Director, Audio
+    Systems Programmer\n\nJaxon Haldane - Player Programmer, Obstacle programming\n\nJackson
+    Lucas - Controls Programmer\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6f6d6b94efb0c354f89cc6d7df2a872e, type: 2}
   m_sharedMaterial: {fileID: -6843548244273865364, guid: 6f6d6b94efb0c354f89cc6d7df2a872e,
