@@ -82,6 +82,9 @@ namespace CadburyRunner.Audio
                 newChild.transform.SetParent(transform);
                 m_audioSources[i] = newChild.AddComponent<AudioSource>();
                 m_audioSources[i].playOnAwake = false;
+                m_audioSources[i].spatialBlend = 0.0f;
+                m_audioSources[i].dopplerLevel = 0.0f;
+                m_audioSources[i].spread = 0.0f;
             }
         }
         #endregion
