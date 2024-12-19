@@ -32,8 +32,8 @@ namespace CadburyRunner
             }
         }
 
-        public void PauseTime() { Time.timeScale = 0; m_pauseCanvas.SetActive(true); }
-        public void UnPauseTime() { Time.timeScale = 1; m_pauseCanvas.SetActive(false);}
+        public void PauseTime() { Time.timeScale = 0; m_pauseCanvas.SetActive(true); SetPauseButton(false); }
+        public void UnPauseTime() { Time.timeScale = 1; m_pauseCanvas.SetActive(false); SetPauseButton(true); }
 
         public void Restart() { LoadScene(SceneManager.GetActiveScene().name); Time.timeScale = 1; }
         public void Quit()
@@ -65,6 +65,7 @@ namespace CadburyRunner
         public void OnLose()
         {
             Time.timeScale = 0;
+            SetPauseButton(false);
             m_loseCanvas.gameObject.SetActive(true);
         }
 

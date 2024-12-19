@@ -1,15 +1,9 @@
 fileFormatVersion: 2
-guid: 25dcfe832e77c094a9ab405df60b2cb4
+guid: 0205e61ef16eb6942919b69f28513452
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Gate_MAT
-    second: {fileID: -7067161007938012766, guid: b91eb46fcb45f30479597ecb50a25a4e,
-      type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
