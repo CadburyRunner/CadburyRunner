@@ -15,6 +15,13 @@ namespace CadburyRunner.Audio
 		[SerializeField] private string m_soundCollection;
 		[SerializeField] private string m_soundName;
 
+        [SerializeField]
+        private enum soundType
+        {
+            Music,
+            SFX,
+        };
+
         private void Start()
         {
             if (m_soundName == string.Empty)
