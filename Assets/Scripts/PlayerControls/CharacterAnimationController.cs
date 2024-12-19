@@ -45,6 +45,11 @@ namespace CadburyRunner
             SFXController.Instance.PlaySoundClip("PlayerMove", "Jump", AudioTrack.PlayerMove);
         }
 
+        public void Trip()
+        {
+            m_anim.Play("Trip");
+        }
+
         public void SetSliding(bool value)
         {
             if (value)
