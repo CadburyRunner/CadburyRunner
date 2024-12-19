@@ -56,7 +56,7 @@ PrefabInstance:
     - target: {fileID: 3099835693521245694, guid: 5762890a30598024ea216a73a5cf44c5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 3099835693521245694, guid: 5762890a30598024ea216a73a5cf44c5,
         type: 3}
@@ -101,7 +101,12 @@ PrefabInstance:
     - target: {fileID: 9173441698123078645, guid: 5762890a30598024ea216a73a5cf44c5,
         type: 3}
       propertyPath: m_Name
-      value: ShortChunk
+      value: ShortChunk Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 9173441698123078645, guid: 5762890a30598024ea216a73a5cf44c5,
+        type: 3}
+      propertyPath: m_TagString
+      value: StartChunk
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5762890a30598024ea216a73a5cf44c5, type: 3}
