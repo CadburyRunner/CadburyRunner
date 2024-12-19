@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207748976091428035}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.81, y: 0.594, z: 30.09}
+  m_LocalPosition: {x: 0, y: 0.594, z: 30.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -365,7 +365,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9220941285669403558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.39, y: 0.594, z: 8.27}
+  m_LocalPosition: {x: 0, y: 0.594, z: 8.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -456,6 +456,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155923507064004969, guid: 43633411a990e834eb008395c10d3c81,
         type: 3}
+      propertyPath: m_possibleObstacles.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155923507064004969, guid: 43633411a990e834eb008395c10d3c81,
+        type: 3}
       propertyPath: m_pickupPositions.Array.data[0]
       value: 
       objectReference: {fileID: 5418553324647735627}
@@ -514,6 +519,24 @@ PrefabInstance:
       propertyPath: m_obstaclePositions.Array.data[1]
       value: 
       objectReference: {fileID: 7919485265450699539}
+    - target: {fileID: 6155923507064004969, guid: 43633411a990e834eb008395c10d3c81,
+        type: 3}
+      propertyPath: m_possibleObstacles.Array.data[0]
+      value: 
+      objectReference: {fileID: 2293222870454311397, guid: 03a73ff64178d2e41b3653e43b73992a,
+        type: 3}
+    - target: {fileID: 6155923507064004969, guid: 43633411a990e834eb008395c10d3c81,
+        type: 3}
+      propertyPath: m_possibleObstacles.Array.data[1]
+      value: 
+      objectReference: {fileID: 2293222870454311397, guid: 53980cd0d5a15c24d99c426a1af3f4dd,
+        type: 3}
+    - target: {fileID: 6155923507064004969, guid: 43633411a990e834eb008395c10d3c81,
+        type: 3}
+      propertyPath: m_possibleObstacles.Array.data[2]
+      value: 
+      objectReference: {fileID: 2293222870454311397, guid: 5011698b64c7cd64db52b92903fe3468,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43633411a990e834eb008395c10d3c81, type: 3}
 --- !u!4 &5236379357192906855 stripped
