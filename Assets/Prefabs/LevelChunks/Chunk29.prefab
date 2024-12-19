@@ -107,6 +107,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5880184180995581556, guid: 5949f2ec90737ad4483e199242d412f4,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -8
+      objectReference: {fileID: 0}
     - target: {fileID: 6860495514335193981, guid: 5949f2ec90737ad4483e199242d412f4,
         type: 3}
       propertyPath: m_pickupPositions.Array.size
@@ -142,6 +147,12 @@ PrefabInstance:
       propertyPath: m_obstaclePositions.Array.data[2]
       value: 
       objectReference: {fileID: 2648508858857390849}
+    - target: {fileID: 6860495514335193981, guid: 5949f2ec90737ad4483e199242d412f4,
+        type: 3}
+      propertyPath: m_possibleObstacles.Array.data[1]
+      value: 
+      objectReference: {fileID: 2293222870454311397, guid: 53980cd0d5a15c24d99c426a1af3f4dd,
+        type: 3}
     - target: {fileID: 7941801777530072167, guid: 5949f2ec90737ad4483e199242d412f4,
         type: 3}
       propertyPath: m_LocalPosition.z

@@ -71,7 +71,8 @@ namespace CadburyRunner.Level
 				spawnPosition = m_nextChunk.EndPoint;
 
 			// create new chunk
-			LevelChunk newChunk = Instantiate(m_possibleLevelChunks[Random.Range(0, m_possibleLevelChunks.Length)], spawnPosition, Quaternion.identity);
+			LevelChunk chunkChoice = m_possibleLevelChunks[Random.Range(0, m_possibleLevelChunks.Length)];
+            LevelChunk newChunk = Instantiate(chunkChoice, spawnPosition, Quaternion.identity);
 			newChunk.Init();
 
             // set up the old chunks correctly
@@ -89,7 +90,7 @@ namespace CadburyRunner.Level
 				m_currentChunk.gameObject.name = "Current Chunk";
 			}
 			m_nextChunk = newChunk;;
-			m_nextChunk.gameObject.name = "Next Chunk";
+			m_nextChunk.gameObject.name = "Next Chunk (" + chunkChoice.name + ")";
         }
 
 		public void SetLevelSpeed(float speed)
