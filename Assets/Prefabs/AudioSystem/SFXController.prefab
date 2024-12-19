@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4032652074974591729}
   - component: {fileID: 4032652074974591728}
+  - component: {fileID: 7686360188117771949}
   m_Layer: 0
   m_Name: SFXController
   m_TagString: Untagged
@@ -81,7 +82,42 @@ MonoBehaviour:
       m_audioClip: {fileID: 8300000, guid: 23ab1e70e64570849b11783ee193255d, type: 3}
     - m_clipName: 2
       m_audioClip: {fileID: 8300000, guid: 14e6f7dd5c0722949bb8173e67a7e813, type: 3}
-  - m_collectionName: Obstacle
+  - m_collectionName: Tree Collision
+    m_soundClips:
+    - m_clipName: TreeImpact
+      m_audioClip: {fileID: 8300000, guid: 80cddb1f56d3cf740bd37c28b2b4caf3, type: 3}
+  - m_collectionName: Tree
     m_soundClips:
     - m_clipName: TreeFalling
       m_audioClip: {fileID: 8300000, guid: 64ef3460140abc643aefbae0017aef61, type: 3}
+  - m_collectionName: Car
+    m_soundClips:
+    - m_clipName: CarDriving
+      m_audioClip: {fileID: 8300000, guid: fd1fd40d1a76e49469f9be31da8e4ec9, type: 3}
+  - m_collectionName: Ambience
+    m_soundClips:
+    - m_clipName: CarDriving
+      m_audioClip: {fileID: 8300000, guid: fd1fd40d1a76e49469f9be31da8e4ec9, type: 3}
+  - m_collectionName: Music
+    m_soundClips:
+    - m_clipName: GameMusic
+      m_audioClip: {fileID: 8300000, guid: 57b2d93fca7c14840aa2da1955013d7c, type: 3}
+--- !u!114 &7686360188117771949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032652074974591695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9efb4fa17bad83449a60ca6249a549a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_soundCollection: Music
+  m_soundName: GameMusic
+  playOnAwake: 1
+  loop: 1
+  mixerGroup: {fileID: 1436732076192454304, guid: 1e7b51e4691bcfe49bdf57f953d951c5,
+    type: 2}
+  m_audioType: 0

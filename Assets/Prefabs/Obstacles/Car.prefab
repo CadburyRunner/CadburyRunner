@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7106feb91737f174f8531d2876067573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_soundName: 1
+  m_collectionName: Collision Metal
+  m_mixerGroup: {fileID: -3459953315554296013, guid: 1e7b51e4691bcfe49bdf57f953d951c5,
+    type: 2}
   m_type: 1
 --- !u!65 &4102113063794878847
 BoxCollider:
@@ -71,7 +75,6 @@ GameObject:
   - component: {fileID: 6800156988729323490}
   - component: {fileID: 5005573313193404922}
   - component: {fileID: 9036371870472245116}
-  - component: {fileID: 1349793269985474130}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -121,21 +124,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 5, z: 10}
   m_Center: {x: -18, y: 2.5, z: 10}
---- !u!114 &1349793269985474130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8663550991046130767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9efb4fa17bad83449a60ca6249a549a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_soundCollection: Obstacle
-  m_soundName: CarDriving
-  m_audioType: 2
 --- !u!1001 &5744373541922725532
 PrefabInstance:
   m_ObjectHideFlags: 0
