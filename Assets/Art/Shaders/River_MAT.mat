@@ -38,13 +38,13 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Ripple_Density: 1
-    - _Ripple_Speed: 0.5
+    - _Ripple_Speed: 2
     - _Slimness: 5
-    - _Waves_Height: 1.53
+    - _Waves_Height: 3
     - _Waves_Speed: 0.3
     m_Colors:
-    - _Base_Color: {r: 0, g: 0.1942922, b: 0.9137255, a: 0}
-    - _Ripple_Colour: {r: 1, g: 1, b: 1, a: 0}
+    - _Base_Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Ripple_Colour: {r: 3.0613565, g: 3.9265225, b: 4.237095, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4914863721727839531
 MonoBehaviour:
