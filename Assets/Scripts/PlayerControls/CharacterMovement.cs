@@ -156,15 +156,6 @@ namespace CadburyRunner
                 // stop the coroutine
                 StopCoroutine(IsSliding());
             }
-
-#if UNITY_EDITOR
-            private void OnDrawGizmos()
-            {
-                Handles.color = Color.green;
-                Handles.DrawWireCube(transform.position + m_collider.center + Vector3.down * m_collider.size.y / 2f, new Vector3(0.5f, 0.1f, 0.5f));
-            }
-#endif
-
         }
 	}
 }
