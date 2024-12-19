@@ -13,7 +13,7 @@ namespace CadburyRunner.Mobile
 	public class MobileController : MonoBehaviour
 	{
         public static MobileController Instance { get; private set; }
-
+        [SerializeField] private bool m_debugging = false;
 
         [Min(0)]
         [Tooltip("The angle in degrees for a tilt input to be registered.")]
@@ -52,7 +52,7 @@ namespace CadburyRunner.Mobile
             }
             else
             {
-                Debug.Log($"Theres 2 of me (Mobile Controller)! Deleting self");
+                Debug.LogWarning($"Theres 2 of me (Mobile Controller)! Deleting self");
                 Destroy(this);
             }
             return Instance;
@@ -92,12 +92,12 @@ namespace CadburyRunner.Mobile
                         {   //If the horizontal movement is greater than the vertical movement...
                             if ((lp.x > fp.x))  //If the movement was to the right)
                             {   //Right swipe
-                                Debug.Log("Right Swipe");
+                                if(m_debugging) Debug.Log("Right Swipe");
                                 m_swipeRightEvent.Invoke(1);
                             }
                             else
                             {   //Left swipe
-                                Debug.Log("Left Swipe");
+                                if(m_debugging) Debug.Log("Left Swipe");
                                 m_swipeLeftEvent.Invoke(-1);
                             }
                         }
@@ -105,19 +105,19 @@ namespace CadburyRunner.Mobile
                         {   //the vertical movement is greater than the horizontal movement
                             if (lp.y > fp.y)  //If the movement was up
                             {   //Up swipe
-                                Debug.Log("Up Swipe");
+                                if(m_debugging) Debug.Log("Up Swipe");
                                 m_swipeUpEvent.Invoke(1);
                             }
                             else
                             {   //Down swipe
-                                Debug.Log("Down Swipe");
+                                if(m_debugging) Debug.Log("Down Swipe");
                                 m_swipeDownEvent.Invoke(-1);
                             }
                         }
                     }
                     else
                     {   //It's a tap as the drag distance is less than 20% of the screen height
-                        Debug.Log("Tap");
+                        if(m_debugging) Debug.Log("Tap");
                         m_tapEvent.Invoke();
                     }
                 }
@@ -127,12 +127,12 @@ namespace CadburyRunner.Mobile
                     //Tap inputs - run constantly
                     if (touch.position.x < Screen.width / 2)
                     {
-                        Debug.Log("Left tap");
+                        if(m_debugging) Debug.Log("Left tap");
                         m_tapLeftEvent.Invoke(-1);
                     }
                     else
                     {
-                        Debug.Log("Right tap");
+                        if(m_debugging) Debug.Log("Right tap");
                         m_tapRightEvent.Invoke(-1);
                     }
                 }
@@ -146,12 +146,12 @@ namespace CadburyRunner.Mobile
             {
                 if (m_inputedRotation.x < 0)
                 {
-                    Debug.Log("Tilt Forward");
+                    if(m_debugging) Debug.Log("Tilt Forward");
                     m_tiltForwardEvent.Invoke(m_inputedRotation.x * m_tiltSensitivity);
                 }
                 else if(m_inputedRotation.x > 0)
                 {
-                    Debug.Log("Tilt Back");
+                    if(m_debugging) Debug.Log("Tilt Back");
                     m_tiltBackwardEvent.Invoke(m_inputedRotation.x * m_tiltSensitivity);
                 }
             }
@@ -161,12 +161,12 @@ namespace CadburyRunner.Mobile
                 //Check which side we're on
                 if (m_inputedRotation.y > 0)
                 {
-                    Debug.Log("Tilt Right");
+                    if(m_debugging) Debug.Log("Tilt Right");
                     m_tiltRightEvent.Invoke(m_inputedRotation.y * m_tiltSensitivity);
                 }
                 else if (m_inputedRotation.y < 0)
                 {
-                    Debug.Log("Tilt Left");
+                    if(m_debugging) Debug.Log("Tilt Left");
                     m_tiltLeftEvent.Invoke(m_inputedRotation.y * m_tiltSensitivity);
                 }
             }
