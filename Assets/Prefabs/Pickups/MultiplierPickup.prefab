@@ -49,6 +49,8 @@ MonoBehaviour:
   m_pointValue: 20
   m_type: 3
   m_powerupTime: 10
+  m_pickupParticles: {fileID: 4688201101635118275, guid: 304209997a15eae44a9df8e3897bc48d,
+    type: 3}
 --- !u!135 &1839914359236078656
 SphereCollider:
   m_ObjectHideFlags: 0
