@@ -70,7 +70,7 @@ MonoBehaviour:
   - {fileID: 4494541834302241616}
   m_possibleObstacles:
   - {fileID: 6240930245927685848, guid: 605d26f4a074629418e52fa15af5274b, type: 3}
-  - {fileID: 2862282659948047553, guid: 523a60282fdd62b468eca0c9642e590d, type: 3}
+  - {fileID: 1186624886501042917, guid: 2470f7bd29f6e404e845a540eac22dfb, type: 3}
   - {fileID: 2862282659948047553, guid: 9fc48b47ee66d1b4a9a6317d62cd2a86, type: 3}
 --- !u!65 &8057475262243657851
 BoxCollider:
