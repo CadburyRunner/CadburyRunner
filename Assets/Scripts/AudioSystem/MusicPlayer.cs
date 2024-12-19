@@ -33,6 +33,7 @@ namespace CadburyRunner.Audio
             Music,
             SFX,
             Obstacle,
+            Vehicle,
         };
 
         [SerializeField] private SoundTypes m_audioType;
@@ -56,6 +57,17 @@ namespace CadburyRunner.Audio
                 else
                 {
                     SFXController.Instance.PlaySoundClip(m_soundCollection, m_soundName, AudioTrack.Obstacle, mixerGroup, true);
+                }
+            }
+            if (m_audioType == SoundTypes.Vehicle)
+            {
+                if (loop == false)
+                {
+                    SFXController.Instance.PlaySoundClip(m_soundCollection, m_soundName, AudioTrack.Vehicle, mixerGroup, false);
+                }
+                else
+                {
+                    SFXController.Instance.PlaySoundClip(m_soundCollection, m_soundName, AudioTrack.Vehicle, mixerGroup, true);
                 }
             }
         }
