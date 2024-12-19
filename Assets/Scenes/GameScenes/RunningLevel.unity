@@ -190,9 +190,9 @@ MonoBehaviour:
   - {fileID: 475843269495860895, guid: b50c2e1eb31d9d44eb34e45e3a7a4639, type: 3}
   - {fileID: 6860495514335193981, guid: 5949f2ec90737ad4483e199242d412f4, type: 3}
   m_possiblePickups:
+  - {fileID: 6504244108799963340, guid: f6ed7cc28174d0844a1c0cf2e58430bc, type: 3}
   - {fileID: 6504244108799963340, guid: bf41d021b04dde747a3a926f10b2a7e9, type: 3}
   - {fileID: 6504244108799963340, guid: 2ea797ab7f9c69c4f9c3016708cb1cc5, type: 3}
-  - {fileID: 6504244108799963340, guid: f6ed7cc28174d0844a1c0cf2e58430bc, type: 3}
 --- !u!4 &725886319
 Transform:
   m_ObjectHideFlags: 0
@@ -284,8 +284,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7137171416823435130, guid: 1a845a4048ffd194cba7b11e620dd544,
         type: 3}
+      propertyPath: forcePower
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137171416823435130, guid: 1a845a4048ffd194cba7b11e620dd544,
+        type: 3}
       propertyPath: m_slidingTime
       value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137171416823435130, guid: 1a845a4048ffd194cba7b11e620dd544,
+        type: 3}
+      propertyPath: m_slideSpeedMultiplier
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7137171416823435132, guid: 1a845a4048ffd194cba7b11e620dd544,
         type: 3}

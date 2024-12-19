@@ -112,7 +112,7 @@ namespace CadburyRunner
                     if (!m_isGrounded)
                     {
                         // just pull the character back down fast
-                        m_rb.AddForce(Vector3.down * forcePower, ForceMode.Force);
+                        m_rb.AddForce(Vector3.down * forcePower, ForceMode.Impulse);
                     }
                     else
                     {
