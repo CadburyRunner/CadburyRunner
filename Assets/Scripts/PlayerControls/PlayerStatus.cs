@@ -15,16 +15,18 @@ namespace CadburyRunner.Player
 	public class PlayerStatus : MonoBehaviour
 	{
 		[Header("Magnet Variables")]
+		[SerializeField] private GameObject[] m_magnetObjects;
 		[SerializeField] private SphereCollider m_pickupRadius;
 		[SerializeField] private float m_pickupRadiusNormal;
 		[SerializeField] private float m_pickupRadiusMagnet;
-		[SerializeField] private GameObject m_magnetObject;
 		private bool m_hasMagnet;
 		private float m_magnetTime;
+
 		[Header("Shield Variables")]
         [SerializeField] private GameObject m_shieldObject;
         private bool m_hasShield = false;
 		private float m_shieldTime;
+
 		[Header("Point Multiplier")]
 		private bool m_hasMultiplier = false;
 		private float m_multiplierTime;
@@ -60,7 +62,8 @@ namespace CadburyRunner.Player
 				else 
 				{
 					m_hasMagnet = false;
-					m_magnetObject.SetActive(false);
+					foreach (GameObject obj in m_magnetObjects)
+						obj.SetActive(false);
                     m_pickupRadius.radius = m_pickupRadiusNormal;
                 }
 			}
@@ -121,7 +124,8 @@ namespace CadburyRunner.Player
 		{
 			m_hasMagnet = true;
 			m_magnetTime = time;
-			m_magnetObject.SetActive(true);
+			foreach (GameObject obj in m_magnetObjects)
+				obj.SetActive(true);
 			m_pickupRadius.radius = m_pickupRadiusMagnet;
 		}
 		/// <summary>
@@ -163,6 +167,10 @@ namespace CadburyRunner.Player
 
         public void Die(ObstacleType type)
 		{
+			m_hasMagnet = false;
+			m_hasShield = false;
+			m_hasMultiplier = false;
+			
 			m_anim.Death(type);
 
 			//show loss screen
