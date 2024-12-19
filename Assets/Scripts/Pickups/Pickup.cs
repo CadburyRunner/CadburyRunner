@@ -25,7 +25,6 @@ namespace CadburyRunner.Pickup
         [SerializeField] private GameObject m_model;
         [SerializeField] private int m_pointValue;
         [SerializeField] private PickupType m_type = 0;
-        [SerializeField, Min(0)] private float m_powerupTime = 10;
         [SerializeField] private ParticleSystem m_pickupParticles;
 
         private void Start()
@@ -37,22 +36,22 @@ namespace CadburyRunner.Pickup
         {
             if (other.CompareTag("Player"))
             {
-                PlayerStatus player = other.GetComponent<PlayerStatus>();
+                PlayerStatus player = other.GetComponentInParent<PlayerStatus>();
                 int pickupType = 0;
 
                 switch (m_type)
                 {
                     case PickupType.Shield:
-                        player.ShieldPickup(m_powerupTime);
+                        player.GiveShieldPickup();
                         pickupType = 1;
                         break;
                     case PickupType.Magnet:
-                        player.MagnetPickup(m_powerupTime);
+                        player.GiveMagnetPickup();
                         pickupType = 1;
                         break;
                     case PickupType.Multiplier:
                         pickupType = 1;
-                        player.MultiplierPickup(m_powerupTime);
+                        player.GiveMultiplierPickup();
                         break;
 
                 }

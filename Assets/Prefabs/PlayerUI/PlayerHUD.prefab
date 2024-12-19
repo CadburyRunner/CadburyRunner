@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_collectableObject: {fileID: 5981763990456826705}
-  m_particleSystem: {fileID: 0}
+  m_particleSystem: {fileID: 1714424099697591217}
 --- !u!1 &139602757032174346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2113,6 +2113,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a71631db6b8206149afbeb0427534f12, type: 3}
+--- !u!198 &1714424099697591217 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8625023883107359794, guid: a71631db6b8206149afbeb0427534f12,
+    type: 3}
+  m_PrefabInstance: {fileID: 6951559069740556163}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6731006332944868019 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4400492634214415664, guid: a71631db6b8206149afbeb0427534f12,

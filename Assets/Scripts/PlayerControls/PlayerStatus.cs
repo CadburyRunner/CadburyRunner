@@ -5,6 +5,7 @@
 ///
 ///</summary>
 
+using CadburyRunner.Audio;
 using CadburyRunner.Level;
 using CadburyRunner.Mobile;
 using CadburyRunner.Obstacle;
@@ -35,22 +36,26 @@ namespace CadburyRunner.Player
 		[Header("Player HUD")]
         [SerializeField] private PlayerHUD m_playerHud;
 
-
 		private bool m_tripped = false;
 		private CharacterAnimationController m_anim;
+
+		[Header("Barking Sounds")]
+		[SerializeField] private Vector2 m_barkDelayMinMax;
+		private float m_dogBarkTimer;
 
         private void Start()
         {
 			m_anim = GetComponentInChildren<CharacterAnimationController>();
 			m_pickupRadius.radius = m_pickupRadiusNormal;
+			SetBarkTimer();
         }
 
-        private void Update()
-        {
+		private void Update()
+		{
 			//if player has recently tripped, recover speed until it is at current speed
 			if (m_tripped)
 			{
-				if(LevelManager.Instance.CurrentLevelSpeed == LevelMetrics.Speed)
+				if (LevelManager.Instance.CurrentLevelSpeed == LevelMetrics.Speed)
 				{
 					m_tripped = false;
 				}
@@ -59,54 +64,56 @@ namespace CadburyRunner.Player
 			// check to remove magnet powerup
 			if (m_hasMagnet)
 			{
-				if (m_magnetTime >= 0)
+				if (m_magnetTime <= 0)
+				{
+					SetMagnetObjects(false);
+					m_playerHud.HidePowerup(0);
+				}
+				else
 				{
 					m_magnetTime -= Time.deltaTime;
 				}
-				else 
-				{
-					m_hasMagnet = false;
-          m_playerHud.HidePowerup(0);
-					foreach (GameObject obj in m_magnetObjects)
-						obj.SetActive(false);
-                    m_pickupRadius.radius = m_pickupRadiusNormal;
-                }
 			}
 
 			// check to remove shield powerup
 			if (m_hasShield)
 			{
-				if(m_shieldTime >= 0)
+				if (m_shieldTime <= 0)
 				{
-					m_shieldTime -= Time.deltaTime;
+					SetShieldObjects(false);
+					m_playerHud.HidePowerup(1);
 				}
 				else
 				{
-					m_hasShield = false;
-					foreach (GameObject obj in m_shieldObjects)
-						obj.SetActive(false);
-          m_playerHud.HidePowerup(1);
-        }
+					m_shieldTime -= Time.deltaTime;
+				}
 			}
 
 			//check to remove multiplier powerup
 			if (m_hasMultiplier)
 			{
-				if (m_multiplierTime >= 0)
+				if (m_multiplierTime <= 0)
 				{
-					m_multiplierTime -= Time.deltaTime;
-
+					SetMultiplierObjects(false);
+					m_playerHud.HidePowerup(2);
 				}
 				else
 				{
-					m_hasMultiplier = false;
-                    ScoreManager.Instance.ChangeMulti(1f);
-                    m_playerHud.HidePowerup(2);
-                }
+					m_multiplierTime -= Time.deltaTime;
+				}
 			}
+
+			// dog barks
+			if (m_dogBarkTimer <= 0)
+			{
+				SFXController.Instance.PlayRandomSoundClip("Dog Bark", AudioTrack.Character);
+				SetBarkTimer();
+			}
+			else
+				m_dogBarkTimer -= Time.deltaTime;
         }
 
-        public void Trip()
+        public void Trip(ObstacleSoundType soundType)
 		{
 			if (ShieldCheck())
 				return;
@@ -114,7 +121,7 @@ namespace CadburyRunner.Player
 			if (m_tripped)
 			{
 				//if player has already tripped die
-				Die(ObstacleType.Trip);
+				Die(ObstacleType.Trip, soundType);
 			}
 			else
 			{
@@ -125,36 +132,47 @@ namespace CadburyRunner.Player
 			}
 		}
 
-		/// <summary>
-		/// initiate magnet pickup
-		/// </summary>
-		/// <param name="time">how long pickup will last for</param>
-		public void MagnetPickup(float time)
+        #region GivePowerups
+        /// <summary>
+        /// initiate magnet pickup
+        /// </summary>
+        /// <param name="time">how long pickup will last for</param>
+        public void GiveMagnetPickup()
 		{
-			m_hasMagnet = true;
-			m_magnetTime = time;
-			m_playerHud.ShowPowerup(0, time);
-			foreach (GameObject obj in m_magnetObjects)
-				obj.SetActive(true);
+			SetMagnetObjects(true);
+			m_magnetTime = LevelMetrics.PowerupTime;
+			m_playerHud.ShowPowerup(0);
 			m_pickupRadius.radius = m_pickupRadiusMagnet;
 		}
+
 		/// <summary>
 		/// initiate shield pickup
 		/// </summary>
 		/// <param name="time">how long pickup will last for</param>
-		public void ShieldPickup(float time)
+		public void GiveShieldPickup()
 		{
-			m_hasShield = true;
-			m_shieldTime = time;
-            foreach (GameObject obj in m_shieldObjects)
-                obj.SetActive(true);
-            m_playerHud.ShowPowerup(1, time);
+			SetShieldObjects(true);
+			m_shieldTime = LevelMetrics.PowerupTime;
+            m_playerHud.ShowPowerup(1);
         }
+
 		/// <summary>
-		/// Check if the shield is active and resets it
+		/// 
 		/// </summary>
-		/// <returns>true if the shield is active</returns>
-		private bool ShieldCheck()
+		/// <param name="type"></param>
+		public void GiveMultiplierPickup()
+		{
+			SetMultiplierObjects(true);
+			m_multiplierTime = LevelMetrics.PowerupTime;
+            m_playerHud.ShowPowerup(2);
+		}
+        #endregion
+
+        /// <summary>
+        /// Check if the shield is active and resets it
+        /// </summary>
+        /// <returns>true if the shield is active</returns>
+        private bool ShieldCheck()
 		{
 			if (m_hasShield)
 			{
@@ -168,31 +186,49 @@ namespace CadburyRunner.Player
 			return false;
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="type"></param>
-		public void MultiplierPickup(float time)
-		{
-			m_hasMultiplier = true;
-			m_multiplierTime = time;
-            m_playerHud.ShowPowerup(2, time);
-            ScoreManager.Instance.ChangeMulti(2f);
-		}
-
-        public void Die(ObstacleType type)
+        public void Die(ObstacleType type, ObstacleSoundType sound)
 		{
 			m_hasMagnet = false;
 			m_hasShield = false;
 			m_hasMultiplier = false;
 			
-			m_anim.Death(type);
+			m_anim.Death(type, sound);
 
 			// disable input
 			gameObject.GetComponent<MobileController>().enabled = false;
 
 			//show loss screen
             GameManager.Instance.OnLose();
+        }
+
+		private void SetMagnetObjects(bool value)
+		{
+			m_hasMagnet = value;
+			foreach (GameObject obj in m_magnetObjects)
+			{
+				obj.SetActive(value);
+			}
+            m_pickupRadius.radius = value ? m_pickupRadiusMagnet : m_pickupRadiusNormal;
+        }
+
+        private void SetShieldObjects(bool value)
+		{
+			m_hasShield = false;
+			foreach (GameObject obj in m_shieldObjects)
+            {
+                obj.SetActive(value);
+            }
+        }
+
+		private void SetMultiplierObjects(bool value)
+		{
+			m_hasMultiplier = value;
+			ScoreManager.Instance.ChangeMulti(value ? 2f : 1f);
+		}
+
+		private void SetBarkTimer()
+		{
+            m_dogBarkTimer = Random.Range(m_barkDelayMinMax.x, m_barkDelayMinMax.y);
         }
 
     }

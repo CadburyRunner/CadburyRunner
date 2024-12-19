@@ -44,9 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9efb4fa17bad83449a60ca6249a549a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_soundCollection: 
-  m_soundName: 
-  playOnAwake: 0
-  loop: 0
-  mixerGroup: {fileID: 0}
-  m_audioType: 0
+  m_soundCollection: Music
+  m_soundName: GameMusic
+  m_playOnStart: 1
+  m_loop: 1
+  m_track: 6

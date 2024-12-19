@@ -5,6 +5,7 @@
 ///
 ///</summary>
 
+using CadburyRunner.Audio;
 using CadburyRunner.Level;
 using System.Collections;
 using UnityEngine;
@@ -52,14 +53,19 @@ namespace CadburyRunner
 
         private IEnumerator AsyncLoad(string name)
         {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(name);
+            // stop playing all sounds if going to main menu            
+            bool sceneIsNotMainMenu = name != "MainMenu";
+            if (!sceneIsNotMainMenu)
+                SFXController.Instance.StopPlaying();
 
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(name);
             while (!asyncLoad.isDone)
             {
                 yield return null;
             }
 
-            SetPauseButton(SceneManager.GetActiveScene().name != "MainMenu");
+            // show the pause menu button if the scene is not the main menu
+            SetPauseButton(sceneIsNotMainMenu);
         }
 
         public void OnLose()

@@ -14,9 +14,10 @@ namespace CadburyRunner.Audio
     public enum AudioTrack
     {
         PlayerMove,
-        Footsteps,
+        Character,
         Pickup,
         Obstacle,
+        Tree,
         Vehicle,
         Music,
         LENGTH
@@ -95,20 +96,16 @@ namespace CadburyRunner.Audio
         [SerializeField] private List<SoundClipCollection> m_clipCollections;
 
 
-        private void PlayAudioClip(SoundClip soundClip, AudioTrack track, AudioMixerGroup audioMixer = null, bool loop = false)
+        private void PlayAudioClip(SoundClip soundClip, AudioTrack track, bool loop = false)
         {
             AudioSource targetSource = m_audioSources[(int)track];
-            if (audioMixer != null)
-            {
-                targetSource.outputAudioMixerGroup = audioMixer;
-            }
 
             targetSource.clip = soundClip.AudioClip;
             targetSource.loop = loop;
             targetSource.Play();
         }
 
-        public void PlaySoundClip(string collectionName, string clipName, AudioTrack track, AudioMixerGroup mixerGroup = null, bool loop = false)
+        public void PlaySoundClip(string collectionName, string clipName, AudioTrack track, bool loop = false)
         {
             SoundClip soundClip = m_clipCollections.Find(collection => collection.CollectionName == collectionName).SoundClips.Find(clip => clip.ClipName == clipName);
             if (soundClip == null)
@@ -117,7 +114,7 @@ namespace CadburyRunner.Audio
                 return;
             }
 
-            PlayAudioClip(soundClip, track, mixerGroup, loop);
+            PlayAudioClip(soundClip, track, loop);
         }
 
         /// <summary>
@@ -139,7 +136,7 @@ namespace CadburyRunner.Audio
                 return;
             }
 
-            PlayAudioClip(soundClips[Random.Range(0, soundClips.Count)], track, default, loop);
+            PlayAudioClip(soundClips[Random.Range(0, soundClips.Count)], track, loop);
         }
 
         /// <summary>

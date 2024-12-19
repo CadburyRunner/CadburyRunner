@@ -426,6 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d20d9282797bec4c8fad1d4e8ab68cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playerHUD: {fileID: 95833419}
 --- !u!4 &1336311837
 Transform:
   m_ObjectHideFlags: 0
@@ -882,7 +883,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_possibleLevelChunks.Array.data[0]
       value: 
-      objectReference: {fileID: 2880912080220657238, guid: 5bd1e6baf15847540bfd6e96a7ba798b,
+      objectReference: {fileID: 475843269495860895, guid: b50c2e1eb31d9d44eb34e45e3a7a4639,
         type: 3}
     - target: {fileID: 1458942473449104407, guid: fed204bc580e8f04fa3b31b704a6b045,
         type: 3}
