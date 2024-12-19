@@ -197,6 +197,37 @@ Transform:
   m_Father: {fileID: 2812910744176444850}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6596743982015814966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1300914802088186359}
+  m_Layer: 0
+  m_Name: Transform (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1300914802088186359
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6596743982015814966}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.24, y: 0, z: 32.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2812910744176444850}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7294986647173420722
 GameObject:
   m_ObjectHideFlags: 0
@@ -17250,7 +17281,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_obstaclePositions.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1300914802088186359}
     - target: {fileID: 2880912080220657238, guid: 5bd1e6baf15847540bfd6e96a7ba798b,
         type: 3}
       propertyPath: m_obstaclePositions.Array.data[1]
@@ -17300,7 +17331,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_possibleObstacles.Array.data[0]
       value: 
-      objectReference: {fileID: 8663550991046130767, guid: 92ab058139f184844935c024ae56f0a6,
+      objectReference: {fileID: 8663550991046130767, guid: 4d3e34412fe12d7478fc74b5d4d2c6c9,
         type: 3}
     - target: {fileID: 2880912080220657238, guid: 5bd1e6baf15847540bfd6e96a7ba798b,
         type: 3}
