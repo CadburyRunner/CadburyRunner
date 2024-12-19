@@ -90,7 +90,10 @@ namespace CadburyRunner.Audio
 
         private void PlayAudioClip(SoundClip soundClip, AudioTrack track, bool loop)
         {
-            m_audioSources[(int)track].clip = soundClip.AudioClip;
+            AudioSource targetSource = m_audioSources[(int)track];
+            targetSource.clip = soundClip.AudioClip;
+            targetSource.loop = loop;
+            targetSource.Play();
         }
 
         public void PlaySoundClip(string collectionName, string clipName, AudioTrack track, bool loop = false)
