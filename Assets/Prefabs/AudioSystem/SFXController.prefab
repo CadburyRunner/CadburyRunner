@@ -81,7 +81,15 @@ MonoBehaviour:
       m_audioClip: {fileID: 8300000, guid: 23ab1e70e64570849b11783ee193255d, type: 3}
     - m_clipName: 2
       m_audioClip: {fileID: 8300000, guid: 14e6f7dd5c0722949bb8173e67a7e813, type: 3}
-  - m_collectionName: Obstacle
+  - m_collectionName: Tree
     m_soundClips:
     - m_clipName: TreeFalling
       m_audioClip: {fileID: 8300000, guid: 64ef3460140abc643aefbae0017aef61, type: 3}
+  - m_collectionName: Car
+    m_soundClips:
+    - m_clipName: CarDriving
+      m_audioClip: {fileID: 8300000, guid: fd1fd40d1a76e49469f9be31da8e4ec9, type: 3}
+  - m_collectionName: Ambience
+    m_soundClips:
+    - m_clipName: CarDriving
+      m_audioClip: {fileID: 8300000, guid: fd1fd40d1a76e49469f9be31da8e4ec9, type: 3}
