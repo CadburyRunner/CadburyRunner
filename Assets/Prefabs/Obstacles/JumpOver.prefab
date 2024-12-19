@@ -48,7 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7106feb91737f174f8531d2876067573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_type: 0
+  m_soundName: 
+  m_collectionName: 
+  m_mixerGroup: {fileID: 0}
+  m_type: 1
 --- !u!65 &2862282659948047554
 BoxCollider:
   m_ObjectHideFlags: 0

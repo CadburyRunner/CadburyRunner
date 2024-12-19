@@ -633,7 +633,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_possibleObstacles.Array.data[2]
       value: 
-      objectReference: {fileID: 2293222870454311397, guid: 5011698b64c7cd64db52b92903fe3468,
+      objectReference: {fileID: 8197455746853495802, guid: c8c89f60fa140c247ba822c834ab18f1,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43633411a990e834eb008395c10d3c81, type: 3}
