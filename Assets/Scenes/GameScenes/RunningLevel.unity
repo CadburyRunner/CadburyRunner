@@ -783,7 +783,7 @@ PrefabInstance:
     - target: {fileID: 1458942473449104406, guid: fed204bc580e8f04fa3b31b704a6b045,
         type: 3}
       propertyPath: m_possibleLevelChunks.Array.size
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1458942473449104406, guid: fed204bc580e8f04fa3b31b704a6b045,
         type: 3}
@@ -808,6 +808,30 @@ PrefabInstance:
       propertyPath: m_possibleLevelChunks.Array.data[3]
       value: 
       objectReference: {fileID: 6860495514335193981, guid: 5949f2ec90737ad4483e199242d412f4,
+        type: 3}
+    - target: {fileID: 1458942473449104406, guid: fed204bc580e8f04fa3b31b704a6b045,
+        type: 3}
+      propertyPath: m_possibleLevelChunks.Array.data[4]
+      value: 
+      objectReference: {fileID: 8220590144404716084, guid: 552e625e890b61b429a28f6a95edc431,
+        type: 3}
+    - target: {fileID: 1458942473449104406, guid: fed204bc580e8f04fa3b31b704a6b045,
+        type: 3}
+      propertyPath: m_possibleLevelChunks.Array.data[5]
+      value: 
+      objectReference: {fileID: 5355994428530569651, guid: 96db8d78f95d4c345951d5aab806b16a,
+        type: 3}
+    - target: {fileID: 1458942473449104406, guid: fed204bc580e8f04fa3b31b704a6b045,
+        type: 3}
+      propertyPath: m_possibleLevelChunks.Array.data[6]
+      value: 
+      objectReference: {fileID: 6729218170420174361, guid: 54e42348fc405b4479b40996fa207801,
+        type: 3}
+    - target: {fileID: 1458942473449104406, guid: fed204bc580e8f04fa3b31b704a6b045,
+        type: 3}
+      propertyPath: m_possibleLevelChunks.Array.data[7]
+      value: 
+      objectReference: {fileID: 2258965081080476725, guid: e2f729d8d4dc9084180796cca7de24d8,
         type: 3}
     - target: {fileID: 1458942473449104407, guid: fed204bc580e8f04fa3b31b704a6b045,
         type: 3}
