@@ -18,6 +18,8 @@ namespace CadburyRunner
 
         private void Update()
         {
+            //pretty much all of this is this equation:
+            //https://www.desmos.com/calculator/irqlnelb1k
             float scale = Mathf.Pow((float)System.Math.E, -m_waveTime) * Mathf.Cos(2 * Mathf.PI * m_waveTime) + 1;
 
             m_collectableObject.transform.rotation = Quaternion.Euler(0, 0, 10f * Mathf.Sin(Time.time) + 23 - ((scale - 1) * 20f));
