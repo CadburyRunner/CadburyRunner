@@ -17,6 +17,7 @@ namespace CadburyRunner.Audio
         Footsteps,
         Pickup,
         Obstacle,
+        Vehicle,
         Music,
         LENGTH
     }
