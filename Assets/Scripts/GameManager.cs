@@ -5,6 +5,7 @@
 ///
 ///</summary>
 
+using CadburyRunner.Level;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -45,11 +46,11 @@ namespace CadburyRunner
 
         public void LoadScene(string name) 
         {
-            StartCoroutine(AsyncLoad(name, name != "MainMenu"));
+            StartCoroutine(AsyncLoad(name));
             Time.timeScale = 1;
         }
 
-        private IEnumerator AsyncLoad(string name, bool showPauseMenu = false)
+        private IEnumerator AsyncLoad(string name)
         {
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(name);
 
@@ -58,8 +59,7 @@ namespace CadburyRunner
                 yield return null;
             }
 
-            if (showPauseMenu)
-                ShowPauseButton();
+            SetPauseButton(SceneManager.GetActiveScene().name != "MainMenu");
         }
 
         public void OnLose()
@@ -68,9 +68,9 @@ namespace CadburyRunner
             m_loseCanvas.gameObject.SetActive(true);
         }
 
-        public void ShowPauseButton()
+        public void SetPauseButton(bool value)
         {
-            m_pauseButton.SetActive(true);
+            m_pauseButton.SetActive(value);
         }
     }
 }
