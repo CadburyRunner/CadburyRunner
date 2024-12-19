@@ -5,7 +5,6 @@
 ///
 ///</summary>
 
-using CadburyRunner.Audio;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -15,72 +14,25 @@ namespace CadburyRunner.Audio
 	{
 		[SerializeField] private string m_soundCollection;
 		[SerializeField] private string m_soundName;
-        [SerializeField] private bool playOnAwake = false;
-        [SerializeField] private bool loop = false;
+        [SerializeField] private bool m_playOnStart = false;
+        [SerializeField] private bool m_loop = false;
+        [SerializeField] private AudioTrack m_track;
         [SerializeField] private AudioMixerGroup mixerGroup;
 
         private void Start()
         {
-            if (playOnAwake)
+            if (m_playOnStart)
             {
-                PlayObstacleSound();
+                Play();
             }
         }
 
-        [SerializeField]
-        private enum SoundTypes
+        public void Play()
         {
-            Music,
-            SFX,
-            Obstacle,
-            Vehicle,
-        };
-
-        [SerializeField] private SoundTypes m_audioType;
-
-        //private void Start()
-        //{
-        //    if (m_soundName == string.Empty)
-        //        SFXController.Instance.PlayRandomSoundClip(m_soundCollection, AudioTrack.Music);
-        //    else
-        //        SFXController.Instance.PlaySoundClip(m_soundCollection, m_soundName, AudioTrack.Music);
-        //}
-
-        public void PlayObstacleSound()
-        {
-            if (m_audioType == SoundTypes.Obstacle)
-            {
-                if (loop == false)
-                {
-                    SFXController.Instance.PlaySoundClip(m_soundCollection, m_soundName, AudioTrack.Obstacle, mixerGroup, false);
-                }
-                else
-                {
-                    SFXController.Instance.PlaySoundClip(m_soundCollection, m_soundName, AudioTrack.Obstacle, mixerGroup, true);
-                }
-            }
-            if (m_audioType == SoundTypes.Vehicle)
-            {
-                if (loop == false)
-                {
-                    SFXController.Instance.PlaySoundClip(m_soundCollection, m_soundName, AudioTrack.Vehicle, mixerGroup, false);
-                }
-                else
-                {
-                    SFXController.Instance.PlaySoundClip(m_soundCollection, m_soundName, AudioTrack.Vehicle, mixerGroup, true);
-                }
-            }
-            if (m_audioType == SoundTypes.Music)
-            {
-                if (loop == false)
-                {
-                    SFXController.Instance.PlaySoundClip(m_soundCollection, m_soundName, AudioTrack.Music, mixerGroup, false);
-                }
-                else
-                {
-                    SFXController.Instance.PlaySoundClip(m_soundCollection, m_soundName, AudioTrack.Music, mixerGroup, true);
-                }
-            }
+            if (m_soundName == string.Empty)
+                SFXController.Instance.PlayRandomSoundClip(m_soundCollection, m_track, m_loop);
+            else
+                SFXController.Instance.PlaySoundClip(m_soundCollection, m_soundName, m_track, mixerGroup, m_loop);
         }
     }
 }
