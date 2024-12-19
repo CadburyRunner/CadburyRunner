@@ -31,9 +31,11 @@ namespace CadburyRunner.Player
 
 
 		private bool m_tripped = false;
+		private CharacterAnimationController m_anim;
 
         private void Start()
         {
+			m_anim = GetComponentInChildren<CharacterAnimationController>();
 			m_pickupRadius.radius = m_pickupRadiusNormal;
         }
 
@@ -159,18 +161,10 @@ namespace CadburyRunner.Player
 			ScoreManager.Instance.ChangeMulti(2f);
 		}
 
-
         public void Die(ObstacleType type)
 		{
-			switch (type)
-			{
-				case ObstacleType.Trip:
-					break;
-				case ObstacleType.Slam:
-					break;
-				case ObstacleType.Fall:
-					break;
-			}
+			m_anim.Death(type);
+
 			//show loss screen
             GameManager.Instance.OnLose();
         }
