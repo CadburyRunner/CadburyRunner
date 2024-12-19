@@ -21,7 +21,7 @@ namespace CadburyRunner.Obstacle
 	{
         [SerializeField] private ObstacleType m_type;
 
-        public void OnTriggerEnter(Collider other)
+        public virtual void OnTriggerEnter(Collider other)
         {
             //if player colliding
             if (other.CompareTag("Player"))

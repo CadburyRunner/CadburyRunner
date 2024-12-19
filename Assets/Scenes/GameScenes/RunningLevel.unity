@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_possibleLevelChunks:
+
   - {fileID: 6124892013323537960, guid: 69c569b11adcf1d43989322cbab9bbcb, type: 3}
   - {fileID: 1561709863004646310, guid: 64b1132e9befaca4d8a350fb505c98b8, type: 3}
   - {fileID: 4322282320323908632, guid: fa4372adc5eadaf4493f8deaa90228ce, type: 3}
@@ -276,6 +277,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137171416823435130, guid: 1a845a4048ffd194cba7b11e620dd544,
+        type: 3}
+      propertyPath: forcePower
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7137171416823435130, guid: 1a845a4048ffd194cba7b11e620dd544,
         type: 3}
