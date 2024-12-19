@@ -7,6 +7,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace CadburyRunner.Audio
 {
@@ -63,6 +64,7 @@ namespace CadburyRunner.Audio
         // constant source list/tracks
         private AudioSource[] m_audioSources = new AudioSource[0];
 
+
         private void AudioTrackSetup()
         {
             int trackCount = (int)AudioTrack.LENGTH;
@@ -91,15 +93,21 @@ namespace CadburyRunner.Audio
 
         [SerializeField] private List<SoundClipCollection> m_clipCollections;
 
-        private void PlayAudioClip(SoundClip soundClip, AudioTrack track, bool loop)
+
+        private void PlayAudioClip(SoundClip soundClip, AudioTrack track, AudioMixerGroup audioMixer = null, bool loop = false)
         {
             AudioSource targetSource = m_audioSources[(int)track];
+            if (audioMixer != null)
+            {
+                targetSource.outputAudioMixerGroup = audioMixer;
+            }
+
             targetSource.clip = soundClip.AudioClip;
             targetSource.loop = loop;
             targetSource.Play();
         }
 
-        public void PlaySoundClip(string collectionName, string clipName, AudioTrack track, bool loop = false)
+        public void PlaySoundClip(string collectionName, string clipName, AudioTrack track, AudioMixerGroup mixerGroup = null, bool loop = false)
         {
             SoundClip soundClip = m_clipCollections.Find(collection => collection.CollectionName == collectionName).SoundClips.Find(clip => clip.ClipName == clipName);
             if (soundClip == null)
@@ -108,7 +116,7 @@ namespace CadburyRunner.Audio
                 return;
             }
 
-            PlayAudioClip(soundClip, track, loop);
+            PlayAudioClip(soundClip, track, mixerGroup, loop);
         }
 
         /// <summary>
@@ -130,7 +138,7 @@ namespace CadburyRunner.Audio
                 return;
             }
 
-            PlayAudioClip(soundClips[Random.Range(0, soundClips.Count)], track, loop);
+            PlayAudioClip(soundClips[Random.Range(0, soundClips.Count)], track, default, loop);
         }
 
         /// <summary>
