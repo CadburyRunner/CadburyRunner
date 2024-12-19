@@ -10,6 +10,7 @@ using UnityEngine;
 namespace CadburyRunner
 {
     using Audio;
+    using CadburyRunner.Obstacle;
     using Level;
 
 	public class CharacterAnimationController : MonoBehaviour
@@ -62,6 +63,13 @@ namespace CadburyRunner
         public void PlayFootstep()
         {
             SFXController.Instance.PlayRandomSoundClip("Footsteps", AudioTrack.Footsteps);
+        }
+
+        public void Death(ObstacleType type)
+        {
+            m_anim.updateMode = AnimatorUpdateMode.UnscaledTime;
+            string name = type.ToString() + " Death";
+            m_anim.Play(name);
         }
     }
 }
