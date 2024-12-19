@@ -12,6 +12,7 @@ namespace CadburyRunner
 	public class CollectableBounce : MonoBehaviour
 	{
         [SerializeField] private GameObject m_collectableObject;
+        [SerializeField] private ParticleSystem m_particleSystem;
 
 
         private float m_waveTime = 5f;
@@ -34,6 +35,7 @@ namespace CadburyRunner
         public void Collected()
         {
             m_waveTime = 0f;
+            m_particleSystem.Play();
         }
     }
 }
