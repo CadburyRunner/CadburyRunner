@@ -18,36 +18,43 @@ namespace CadburyRunner
 	{
 		public class CharacterMovement : MonoBehaviour
 		{
-            [Header("Float variables")]
+            [Header("Physics Details")]
             [SerializeField] private float m_leftFull;
             [SerializeField] private float m_rightFull;
             [SerializeField, Range(0, 1)] private float m_input;
             [SerializeField] private float m_slidingTime;
-            [SerializeField] private float forcePower;
+            [SerializeField] private float m_jumpForce;
             [SerializeField] private float m_slideSpeedMultiplier;
-
             [SerializeField] LayerMask m_groundedMask;
 
-            [Header("References")]
-            [SerializeField] private BoxCollider m_normalCollider;
-            [SerializeField] private BoxCollider m_sliderCollider;
+            [Header("Collider Details")]
+            [SerializeField] private Vector3 m_normalColliderCenter = Vector3.one;
+            [SerializeField] private Vector3 m_normalColliderSize = Vector3.one;
 
+            [SerializeField] private Vector3 m_slidingColliderCenter = Vector3.one;
+            [SerializeField] private Vector3 m_slidingColliderSize = Vector3.one;
+
+            private BoxCollider m_collider;
             private Rigidbody m_rb;
+            private CharacterAnimationController m_anim;
             private bool m_isSliding;
             private bool m_isGrounded;
 
             public bool lose;
 
-            private void Start()
+            private void Awake()
             {
                 m_rb = GetComponent<Rigidbody>();
+                m_collider = GetComponent<BoxCollider>();
+                m_anim = GetComponentInChildren<CharacterAnimationController>();
+
+                m_collider.center = m_normalColliderCenter;
+                m_collider.size = m_normalColliderSize;
             }
 
+#if UNITY_EDITOR
             void Update()
             {
-                
-
-#if UNITY_EDITOR
                 SideToSideMovement(m_input);
                 if (Input.GetKeyDown(KeyCode.S))
                     Slide();
@@ -60,8 +67,8 @@ namespace CadburyRunner
                     lose = false;
                     GameManager.Instance.OnLose();
                 }
-#endif
             }
+#endif
 
             private void FixedUpdate()
             {
@@ -69,9 +76,10 @@ namespace CadburyRunner
 
                 // check grounded
                 Vector3 bottom = transform.position;
-                bottom.y -= m_normalCollider.bounds.extents.y;
-                m_isGrounded = Physics.BoxCast(transform.position + m_normalCollider.center, new Vector3(0.5f, 0.1f, 0.5f), 
-                    Vector3.down, transform.rotation, m_normalCollider.size.y, m_groundedMask, QueryTriggerInteraction.Ignore);
+                bottom.y -= m_collider.bounds.extents.y;
+                m_isGrounded = Physics.BoxCast(transform.position + m_collider.center, new Vector3(0.5f, 0.1f, 0.5f), 
+                    Vector3.down, transform.rotation, m_collider.size.y / 2f, m_groundedMask, QueryTriggerInteraction.Ignore);
+                m_anim.SetGrounded(m_isGrounded);
             }
 
             public void SideToSideMovement(float input)
@@ -89,17 +97,17 @@ namespace CadburyRunner
 
                     // reset to normal
                     m_isSliding = false;
-                    m_normalCollider.gameObject.SetActive(true);
-                    m_sliderCollider.gameObject.SetActive(false);
+                    m_collider.center = m_normalColliderCenter;
+                    m_collider.size = m_normalColliderSize;
 
                     // add force up
-                    m_rb.AddForce(Vector3.up * forcePower, ForceMode.Impulse);
+                    m_rb.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
 
                     // reset grounded
                     m_isGrounded = false;
 
-                    // play sound effect
-                    SFXController.Instance.PlaySoundClip("PlayerMove", "Jump", AudioTrack.PlayerMove);
+                    // play animation
+                    m_anim.Jump();                    
                 }
             }
 
@@ -112,14 +120,14 @@ namespace CadburyRunner
                     if (!m_isGrounded)
                     {
                         // just pull the character back down fast
-                        m_rb.AddForce(Vector3.down * forcePower, ForceMode.Impulse);
+                        m_rb.AddForce(Vector3.down * m_jumpForce, ForceMode.Impulse);
                     }
                     else
                     {
                         // if not in the air then switch collider to sliding collider
                         m_isSliding = true;
-                        m_normalCollider.gameObject.SetActive(false);
-                        m_sliderCollider.gameObject.SetActive(true);
+                        m_collider.center = m_slidingColliderCenter;
+                        m_collider.size = m_slidingColliderSize;
 
                         // start the IsSliding coroutine
                         StartCoroutine(IsSliding());
@@ -127,8 +135,7 @@ namespace CadburyRunner
                         // give extra speed
                         LevelManager.Instance.SetLevelSpeed(LevelMetrics.Speed * m_slideSpeedMultiplier);
 
-                        // play sound effect
-                        SFXController.Instance.PlaySoundClip("PlayerMove", "Slide", AudioTrack.PlayerMove);
+                        m_anim.SetSliding(true);
                     }
                 }
             }
@@ -140,23 +147,21 @@ namespace CadburyRunner
 
                 // reset the colliders and bool
                 m_isSliding = false;
-                m_normalCollider.gameObject.SetActive(true);
-                m_sliderCollider.gameObject.SetActive(false);
+                m_collider.center = m_normalColliderCenter;
+                m_collider.size = m_normalColliderSize;
+
+                // stop the animation
+                m_anim.SetSliding(false);
 
                 // stop the coroutine
                 StopCoroutine(IsSliding());
-            }
-
-            public void GetHit(ObstacleType type)
-            {
-
             }
 
 #if UNITY_EDITOR
             private void OnDrawGizmos()
             {
                 Handles.color = Color.green;
-                Handles.DrawWireCube(transform.position + Vector3.down * 0.05f, Vector3.one);
+                Handles.DrawWireCube(transform.position + m_collider.center + Vector3.down * m_collider.size.y / 2f, new Vector3(0.5f, 0.1f, 0.5f));
             }
 #endif
 

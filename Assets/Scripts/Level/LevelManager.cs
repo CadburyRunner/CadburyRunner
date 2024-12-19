@@ -38,7 +38,7 @@ namespace CadburyRunner.Level
 		private float m_currentLevelSpeed;
 		public float CurrentLevelSpeed => m_currentLevelSpeed;
 
-		bool m_returningToNormalSpeed;
+		bool m_approachingSetSpeed;
 
         private void Start()
         {
@@ -48,7 +48,7 @@ namespace CadburyRunner.Level
         public void Init()
         {
 			m_currentLevelSpeed = 0;
-			m_returningToNormalSpeed = true;
+			m_approachingSetSpeed = false;
 			GenerateNewChunk();
 			m_nextChunk.GetComponent<Collider>().enabled = false;
 			GenerateNewChunk();
@@ -57,13 +57,9 @@ namespace CadburyRunner.Level
 
         private void Update()
         {
-            if (m_returningToNormalSpeed)
+            if (!m_approachingSetSpeed && Mathf.Abs(LevelMetrics.Speed - m_currentLevelSpeed) > 0.01f)
 			{
 				m_currentLevelSpeed = Mathf.MoveTowards(m_currentLevelSpeed, LevelMetrics.Speed, LevelMetrics.Acceleration * Time.deltaTime);
-
-				// if reaches target, stop
-				if (m_currentLevelSpeed == LevelMetrics.Speed)
-					m_returningToNormalSpeed = false;
 			}
         }
 
@@ -114,7 +110,9 @@ namespace CadburyRunner.Level
 
 			m_currentLevelSpeed -= 0.01f;
 
-			StartCoroutine(approachLevelSpeed(speed));
+            StopCoroutine(approachLevelSpeed(speed));
+            m_approachingSetSpeed = true;
+            StartCoroutine(approachLevelSpeed(speed));
 		}
 
 		private IEnumerator approachLevelSpeed(float target)
@@ -124,8 +122,8 @@ namespace CadburyRunner.Level
 				m_currentLevelSpeed = Mathf.MoveTowards(m_currentLevelSpeed, target, LevelMetrics.Decceleration * Time.deltaTime);
 				yield return null;
 			}
-			m_returningToNormalSpeed = true;
 
+			m_approachingSetSpeed = false;
 			StopCoroutine(approachLevelSpeed(target));
 		}
     }
