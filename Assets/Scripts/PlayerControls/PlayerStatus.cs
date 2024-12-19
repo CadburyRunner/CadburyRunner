@@ -7,6 +7,7 @@
 
 using CadburyRunner.Level;
 using CadburyRunner.Obstacle;
+using CadburyRunner.PlayerUI;
 using CadburyRunner.ScoreSystem;
 using UnityEngine;
 
@@ -30,6 +31,8 @@ namespace CadburyRunner.Player
 		[Header("Point Multiplier")]
 		private bool m_hasMultiplier = false;
 		private float m_multiplierTime;
+		[Header("Player HUD")]
+        [SerializeField] private PlayerHUD m_playerHud;
 
 
 		private bool m_tripped = false;
@@ -62,6 +65,7 @@ namespace CadburyRunner.Player
 				else 
 				{
 					m_hasMagnet = false;
+          m_playerHud.HidePowerup(0);
 					foreach (GameObject obj in m_magnetObjects)
 						obj.SetActive(false);
                     m_pickupRadius.radius = m_pickupRadiusNormal;
@@ -80,7 +84,8 @@ namespace CadburyRunner.Player
 					m_hasShield = false;
 					foreach (GameObject obj in m_shieldObjects)
 						obj.SetActive(false);
-				}
+          m_playerHud.HidePowerup(1);
+        }
 			}
 
 			//check to remove multiplier powerup
@@ -95,6 +100,7 @@ namespace CadburyRunner.Player
 				{
 					m_hasMultiplier = false;
                     ScoreManager.Instance.ChangeMulti(1f);
+                    m_playerHud.HidePowerup(2);
                 }
 			}
         }
@@ -125,6 +131,7 @@ namespace CadburyRunner.Player
 		{
 			m_hasMagnet = true;
 			m_magnetTime = time;
+			m_playerHud.ShowPowerup(0, time);
 			foreach (GameObject obj in m_magnetObjects)
 				obj.SetActive(true);
 			m_pickupRadius.radius = m_pickupRadiusMagnet;
@@ -139,6 +146,7 @@ namespace CadburyRunner.Player
 			m_shieldTime = time;
             foreach (GameObject obj in m_shieldObjects)
                 obj.SetActive(true);
+            m_playerHud.ShowPowerup(1, time);
         }
 		/// <summary>
 		/// Check if the shield is active and resets it
@@ -152,6 +160,7 @@ namespace CadburyRunner.Player
 				m_shieldTime = 0;
                 foreach (GameObject obj in m_shieldObjects)
                     obj.SetActive(false);
+				m_playerHud.HidePowerup(1);
                 return true;
 			}
 			return false;
@@ -165,7 +174,8 @@ namespace CadburyRunner.Player
 		{
 			m_hasMultiplier = true;
 			m_multiplierTime = time;
-			ScoreManager.Instance.ChangeMulti(2f);
+            m_playerHud.ShowPowerup(2, time);
+            ScoreManager.Instance.ChangeMulti(2f);
 		}
 
         public void Die(ObstacleType type)
