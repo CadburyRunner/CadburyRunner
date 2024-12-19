@@ -8,7 +8,7 @@
 using CadburyRunner.Audio;
 using UnityEngine;
 
-namespace CadburyRunner
+namespace CadburyRunner.Audio
 {
 	public class MusicPlayer : MonoBehaviour
 	{
