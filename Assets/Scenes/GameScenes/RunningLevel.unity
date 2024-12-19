@@ -185,11 +185,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_possibleLevelChunks:
-  - {fileID: 2880912080220657238, guid: 9d20b09bcefe5f64eb4718fccd315f74, type: 3}
   - {fileID: 2334620032071090537, guid: 7593bad50545d9c43a370153fca6af0c, type: 3}
   - {fileID: 7951392615293140663, guid: 6a890ac3532535046a789a8f5781449c, type: 3}
-  - {fileID: 2880912080220657238, guid: a215b3763759e0844b8d404348460c29, type: 3}
   - {fileID: 475843269495860895, guid: b50c2e1eb31d9d44eb34e45e3a7a4639, type: 3}
+  - {fileID: 6860495514335193981, guid: 5949f2ec90737ad4483e199242d412f4, type: 3}
 --- !u!4 &725886319
 Transform:
   m_ObjectHideFlags: 0
@@ -278,6 +277,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137171416823435130, guid: 1a845a4048ffd194cba7b11e620dd544,
+        type: 3}
+      propertyPath: forcePower
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7137171416823435130, guid: 1a845a4048ffd194cba7b11e620dd544,
         type: 3}
