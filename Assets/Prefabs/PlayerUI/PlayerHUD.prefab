@@ -349,6 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_scoreText: {fileID: 139602756589212678}
   m_collectableText: {fileID: 139602757622136608}
+  m_bounceScript: {fileID: 8557221322869333894}
 --- !u!1 &139602757622136614
 GameObject:
   m_ObjectHideFlags: 0
