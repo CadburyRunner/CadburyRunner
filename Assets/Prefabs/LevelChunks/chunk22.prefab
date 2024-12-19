@@ -63,7 +63,7 @@ MonoBehaviour:
   - {fileID: 1114022778392597089}
   - {fileID: 117538287035709646}
   - {fileID: 2964956536509820900}
-  m_obstacleSpawnChance: 0.33
+  m_obstacleSpawnChance: 0.75
   m_obstaclePositions:
   - {fileID: 4943577634370627544}
   - {fileID: 4473492814636027286}

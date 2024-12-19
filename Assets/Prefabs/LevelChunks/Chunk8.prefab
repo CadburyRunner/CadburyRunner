@@ -516,6 +516,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2880912080220657238, guid: 5bd1e6baf15847540bfd6e96a7ba798b,
         type: 3}
+      propertyPath: m_obstacleSpawnChance
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2880912080220657238, guid: 5bd1e6baf15847540bfd6e96a7ba798b,
+        type: 3}
       propertyPath: m_pickupPositions.Array.size
       value: 5
       objectReference: {fileID: 0}
