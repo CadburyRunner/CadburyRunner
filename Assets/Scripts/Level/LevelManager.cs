@@ -21,7 +21,6 @@ namespace CadburyRunner.Level
 			else
 			{
 				Destroy(gameObject);
-				DontDestroyOnLoad(gameObject);
 			}
 
         }
@@ -42,6 +41,11 @@ namespace CadburyRunner.Level
 		bool m_returningToNormalSpeed;
 
         private void Start()
+        {
+			Init();
+        }
+
+        public void Init()
         {
 			m_currentLevelSpeed = 0;
 			m_returningToNormalSpeed = true;
