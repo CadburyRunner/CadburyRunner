@@ -6,6 +6,7 @@
 ///</summary>
 
 using CadburyRunner.Level;
+using CadburyRunner.Mobile;
 using CadburyRunner.Obstacle;
 using CadburyRunner.PlayerUI;
 using CadburyRunner.ScoreSystem;
@@ -118,6 +119,7 @@ namespace CadburyRunner.Player
 			{
 				//if player hasn't tripped set tripped to true and lower speed
 				m_tripped = true;
+				m_anim.Trip();
 				LevelManager.Instance.SetLevelSpeed(LevelMetrics.Speed / 8f);
 			}
 		}
@@ -182,6 +184,9 @@ namespace CadburyRunner.Player
 			m_hasMultiplier = false;
 			
 			m_anim.Death(type);
+
+			// disable input
+			gameObject.GetComponent<MobileController>().enabled = false;
 
 			//show loss screen
             GameManager.Instance.OnLose();
