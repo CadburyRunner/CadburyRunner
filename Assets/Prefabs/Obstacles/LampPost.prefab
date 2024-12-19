@@ -93,18 +93,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3830712685680866215}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9efb4fa17bad83449a60ca6249a549a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_soundCollection: Tree
   m_soundName: TreeFalling
-  playOnAwake: 0
-  loop: 0
+  m_playOnStart: 0
+  m_loop: 0
+  m_track: 0
   mixerGroup: {fileID: 930726996956687762, guid: 1e7b51e4691bcfe49bdf57f953d951c5,
     type: 2}
-  m_audioType: 2
 --- !u!1 &7195896153763526899
 GameObject:
   m_ObjectHideFlags: 0
