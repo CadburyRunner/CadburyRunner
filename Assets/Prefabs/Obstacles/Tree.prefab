@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8184851955656067248}
-  - component: {fileID: 4852107398711172018}
-  - component: {fileID: 8358910537207867776}
   m_Layer: 0
   m_Name: LampPost
   m_TagString: Untagged
@@ -34,46 +32,6 @@ Transform:
   m_Father: {fileID: 3992774993995569478}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &4852107398711172018
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002924823332904190}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a014da3583f88564abb285050a40837e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8358910537207867776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002924823332904190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9efb4fa17bad83449a60ca6249a549a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_soundCollection: Tree
-  m_soundName: TreeFalling
-  playOnAwake: 0
-  loop: 0
-  mixerGroup: {fileID: 930726996956687762, guid: 1e7b51e4691bcfe49bdf57f953d951c5,
-    type: 2}
-  m_audioType: 2
 --- !u!1 &3830712685680866215
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,6 +43,8 @@ GameObject:
   - component: {fileID: 3992774993995569478}
   - component: {fileID: 3430337516126471572}
   - component: {fileID: 8111152941359460615}
+  - component: {fileID: 6327054107216953930}
+  - component: {fileID: 4906550798900032763}
   m_Layer: 0
   m_Name: Trip Obstacle
   m_TagString: Untagged
@@ -136,8 +96,48 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 2, z: 1}
-  m_Center: {x: -1.75, y: 1, z: 0}
+  m_Size: {x: 1.5, y: 3.5, z: 1}
+  m_Center: {x: 0, y: 1.75, z: 0}
+--- !u!95 &6327054107216953930
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3830712685680866215}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a014da3583f88564abb285050a40837e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4906550798900032763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3830712685680866215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9efb4fa17bad83449a60ca6249a549a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_soundCollection: Tree
+  m_soundName: TreeFalling
+  playOnAwake: 0
+  loop: 0
+  mixerGroup: {fileID: 930726996956687762, guid: 1e7b51e4691bcfe49bdf57f953d951c5,
+    type: 2}
+  m_audioType: 2
 --- !u!1 &7195896153763526899
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7289fc496383040abfdb12076a9373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_lampPost: {fileID: 4852107398711172018}
+  m_lampPost: {fileID: 0}
 --- !u!1001 &4603505560109836125
 PrefabInstance:
   m_ObjectHideFlags: 0
