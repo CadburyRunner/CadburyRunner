@@ -13,7 +13,7 @@ namespace CadburyRunner.Audio
     public enum AudioTrack
     {
         PlayerMove,
-        Footstepts,
+        Footsteps,
         Pickup,
         Obstacle,
         Music,
@@ -128,6 +128,24 @@ namespace CadburyRunner.Audio
             }
 
             PlayAudioClip(soundClips[Random.Range(0, soundClips.Count)], track, loop);
+        }
+
+        /// <summary>
+        /// Stop playing all sounds on all tracks.
+        /// </summary>
+        public void StopPlaying()
+        {
+            foreach (AudioSource source in m_audioSources)
+                source.Stop();
+        }
+
+        /// <summary>
+        /// Stop playing sound on a specific track.
+        /// </summary>
+        /// <param name="track"></param>
+        public void StopPlaying(AudioTrack track)
+        {
+            m_audioSources[(int)track].Stop();
         }
 
         private void LogMissingCollectionError(string collectionName)
