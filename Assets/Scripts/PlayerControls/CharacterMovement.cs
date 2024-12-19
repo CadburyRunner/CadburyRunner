@@ -10,7 +10,7 @@ using CadburyRunner.Obstacle;
 using System.Collections;
 using CadburyRunner.Audio;
 using UnityEditor;
-using static UnityEngine.LightAnchor;
+using CadburyRunner.Level;
 
 namespace CadburyRunner
 {
@@ -24,6 +24,8 @@ namespace CadburyRunner
             [SerializeField, Range(0, 1)] private float m_input;
             [SerializeField] private float m_slidingTime;
             [SerializeField] private float forcePower;
+            [SerializeField] private float m_slideSpeedMultiplier;
+
             [SerializeField] LayerMask m_groundedMask;
 
             [Header("References")]
@@ -110,7 +112,7 @@ namespace CadburyRunner
                     if (!m_isGrounded)
                     {
                         // just pull the character back down fast
-                        m_rb.AddForce(Vector3.down * forcePower, ForceMode.Force);
+                        m_rb.AddForce(Vector3.down * forcePower, ForceMode.Impulse);
                     }
                     else
                     {
@@ -121,6 +123,9 @@ namespace CadburyRunner
 
                         // start the IsSliding coroutine
                         StartCoroutine(IsSliding());
+
+                        // give extra speed
+                        LevelManager.Instance.SetLevelSpeed(LevelMetrics.Speed * m_slideSpeedMultiplier);
 
                         // play sound effect
                         SFXController.Instance.PlaySoundClip("PlayerMove", "Slide", AudioTrack.PlayerMove);
