@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4032652074974591729}
   - component: {fileID: 4032652074974591728}
-  - component: {fileID: 7686360188117771949}
   m_Layer: 0
   m_Name: SFXController
   m_TagString: Untagged
@@ -102,22 +101,3 @@ MonoBehaviour:
     m_soundClips:
     - m_clipName: GameMusic
       m_audioClip: {fileID: 8300000, guid: 57b2d93fca7c14840aa2da1955013d7c, type: 3}
---- !u!114 &7686360188117771949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4032652074974591695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9efb4fa17bad83449a60ca6249a549a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_soundCollection: Music
-  m_soundName: GameMusic
-  playOnAwake: 1
-  loop: 1
-  mixerGroup: {fileID: 1436732076192454304, guid: 1e7b51e4691bcfe49bdf57f953d951c5,
-    type: 2}
-  m_audioType: 0
