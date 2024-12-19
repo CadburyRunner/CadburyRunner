@@ -81,6 +81,10 @@ MonoBehaviour:
       m_audioClip: {fileID: 8300000, guid: 23ab1e70e64570849b11783ee193255d, type: 3}
     - m_clipName: 2
       m_audioClip: {fileID: 8300000, guid: 14e6f7dd5c0722949bb8173e67a7e813, type: 3}
+  - m_collectionName: Tree Collision
+    m_soundClips:
+    - m_clipName: TreeImpact
+      m_audioClip: {fileID: 8300000, guid: 80cddb1f56d3cf740bd37c28b2b4caf3, type: 3}
   - m_collectionName: Tree
     m_soundClips:
     - m_clipName: TreeFalling

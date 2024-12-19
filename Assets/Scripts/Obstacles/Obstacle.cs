@@ -7,6 +7,8 @@
 
 using UnityEngine;
 using CadburyRunner.Player;
+using UnityEngine.Audio;
+using CadburyRunner.Audio;
 
 namespace CadburyRunner.Obstacle
 {
@@ -17,8 +19,13 @@ namespace CadburyRunner.Obstacle
         Fall,
     }
 
+
     public class Obstacle : MonoBehaviour
 	{
+        [SerializeField] private string m_soundName = "";
+        [SerializeField] private string m_collectionName;
+        [SerializeField] private AudioMixerGroup m_mixerGroup;
+
         [SerializeField] private ObstacleType m_type;
 
         public virtual void OnTriggerEnter(Collider other)
@@ -28,6 +35,11 @@ namespace CadburyRunner.Obstacle
             {
                 //gets player status component in parent
                 PlayerStatus status = other.GetComponent<PlayerStatus>();
+
+                if (m_soundName != "")
+                {
+                    SFXController.Instance.PlaySoundClip(m_collectionName, m_soundName, AudioTrack.Obstacle, m_mixerGroup, false);
+                }
 
                 if (m_type == ObstacleType.Trip)
                     status.Trip();
