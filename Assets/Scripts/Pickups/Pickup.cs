@@ -36,7 +36,7 @@ namespace CadburyRunner.Pickup
         {
             if (other.CompareTag("Player"))
             {
-                PlayerStatus player = other.GetComponentInParent<PlayerStatus>();
+                PlayerStatus player = other.GetComponent<PlayerStatus>();
                 int pickupType = 0;
 
                 switch (m_type)

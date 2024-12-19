@@ -27,26 +27,12 @@ namespace CadburyRunner.Obstacle
             if (other.CompareTag("Player"))
             {
                 //gets player status component in parent
-                PlayerStatus status = other.GetComponentInParent<PlayerStatus>();
+                PlayerStatus status = other.GetComponent<PlayerStatus>();
 
-                switch (m_type)
-                {
-                    case ObstacleType.Trip:
-
-                        status.Trip();
-
-                        break;
-                    case ObstacleType.Slam:
-
-                        status.Die(ObstacleType.Slam);
-
-                        break;
-                    case ObstacleType.Fall:
-
-                        status.Die(ObstacleType.Fall);
-
-                        break;
-                }
+                if (m_type == ObstacleType.Trip)
+                    status.Trip();
+                else
+                    status.Die(m_type);
             }
         }
 #if UNITY_EDITOR
