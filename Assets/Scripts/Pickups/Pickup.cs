@@ -26,6 +26,7 @@ namespace CadburyRunner.Pickup
         [SerializeField] private int m_pointValue;
         [SerializeField] private PickupType m_type = 0;
         [SerializeField, Min(0)] private float m_powerupTime = 10;
+        [SerializeField] private ParticleSystem m_pickupParticles;
 
         private void Start()
         {
@@ -68,7 +69,10 @@ namespace CadburyRunner.Pickup
                     ScoreManager.Instance.AddScore(m_pointValue); // Add the "m_pointValue" int from the chocolate bar ScriptableObject to the players score.
                 }
 
-                
+                if(m_pickupParticles != null)
+                {
+                    Instantiate(m_pickupParticles, transform.position, Quaternion.identity);
+                }
                 Destroy(gameObject); // Destroy the pickup.
             }
         }

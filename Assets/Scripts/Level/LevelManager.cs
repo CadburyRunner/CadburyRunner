@@ -31,6 +31,8 @@ namespace CadburyRunner.Level
 		[SerializeField] private GameObject[] m_possiblePickups;
 		public GameObject[] Pickups => m_possiblePickups;
 
+		private GameObject m_startingChunk;
+
 		private LevelChunk m_previousChunk;
 		private LevelChunk m_currentChunk;
 		private LevelChunk m_nextChunk;
@@ -47,6 +49,7 @@ namespace CadburyRunner.Level
 
         public void Init()
         {
+			m_startingChunk = GameObject.FindWithTag("StartChunk");
 			m_currentLevelSpeed = 0;
 			m_approachingSetSpeed = false;
 			GenerateNewChunk();
@@ -75,10 +78,16 @@ namespace CadburyRunner.Level
             LevelChunk newChunk = Instantiate(chunkChoice, spawnPosition, Quaternion.identity);
 			newChunk.Init();
 
-            // set up the old chunks correctly
-            // old is destroyed -> current becomes old -> next becomes current -> new becomes next
-            if (m_previousChunk)
-                Destroy(m_previousChunk.gameObject);
+			// set up the old chunks correctly
+			// old is destroyed -> current becomes old -> next becomes current -> new becomes next
+			if (m_previousChunk)
+			{
+				// destroy the starting chunk if it exists
+				if (m_startingChunk)
+					Destroy(m_startingChunk);
+
+				Destroy(m_previousChunk.gameObject);
+			}
 			if (m_currentChunk)
 			{
 				m_previousChunk = m_currentChunk;

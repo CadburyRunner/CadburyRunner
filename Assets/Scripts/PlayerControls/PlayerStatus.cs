@@ -25,7 +25,7 @@ namespace CadburyRunner.Player
 		private float m_magnetTime;
 
 		[Header("Shield Variables")]
-        [SerializeField] private GameObject m_shieldObject;
+        [SerializeField] private GameObject[] m_shieldObjects;
         private bool m_hasShield = false;
 		private float m_shieldTime;
 
@@ -83,9 +83,10 @@ namespace CadburyRunner.Player
 				else
 				{
 					m_hasShield = false;
-					m_shieldObject.SetActive(false);
-                    m_playerHud.HidePowerup(1);
-                }
+					foreach (GameObject obj in m_shieldObjects)
+						obj.SetActive(false);
+          m_playerHud.HidePowerup(1);
+        }
 			}
 
 			//check to remove multiplier powerup
@@ -145,8 +146,9 @@ namespace CadburyRunner.Player
 		{
 			m_hasShield = true;
 			m_shieldTime = time;
+            foreach (GameObject obj in m_shieldObjects)
+                obj.SetActive(true);
             m_playerHud.ShowPowerup(1, time);
-            m_shieldObject.SetActive(true);
         }
 		/// <summary>
 		/// Check if the shield is active and resets it
@@ -158,7 +160,8 @@ namespace CadburyRunner.Player
 			{
 				m_hasShield = false;
 				m_shieldTime = 0;
-                m_shieldObject.SetActive(false);
+                foreach (GameObject obj in m_shieldObjects)
+                    obj.SetActive(false);
 				m_playerHud.HidePowerup(1);
                 return true;
 			}
