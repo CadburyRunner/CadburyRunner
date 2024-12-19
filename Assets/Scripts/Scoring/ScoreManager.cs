@@ -6,6 +6,7 @@
 ///</summary>
 
 using CadburyRunner.Level;
+using CadburyRunner.PlayerUI;
 using UnityEngine;
 
 namespace CadburyRunner.ScoreSystem
@@ -29,6 +30,8 @@ namespace CadburyRunner.ScoreSystem
         }
         #endregion
 
+        [SerializeField] private PlayerHUD m_playerHUD;
+
         private float m_score;
         private float m_scoreMulti = 1f;
 
@@ -41,6 +44,7 @@ namespace CadburyRunner.ScoreSystem
         {
             //add score when enabled
             m_score += LevelManager.Instance.CurrentLevelSpeed * Time.deltaTime * m_scoreMulti;
+            m_playerHUD.UpdateScore(m_score);
         }
 
         /// <summary>
@@ -50,6 +54,7 @@ namespace CadburyRunner.ScoreSystem
         public void AddScore(float scoreToAdd)
         {
             m_score += scoreToAdd * m_scoreMulti;
+            m_playerHUD.UpdateScore(m_score);
         }
 
         /// <summary>
@@ -58,11 +63,10 @@ namespace CadburyRunner.ScoreSystem
         /// <param name="scoreToAdd"></param>
         public void AddScoreCollectable(float scoreToAdd)
         {
-            if (Instance)
-            {
-                m_score += scoreToAdd * m_scoreMulti;
-                m_collectableCount++;
-            }
+            m_score += scoreToAdd * m_scoreMulti;
+            m_collectableCount++;
+            m_playerHUD.UpdateScore(m_score);
+            m_playerHUD.UpdateCollectibleCount(m_collectableCount);
         }
 
         /// <summary>

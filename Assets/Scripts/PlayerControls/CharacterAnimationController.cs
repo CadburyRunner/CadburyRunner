@@ -67,12 +67,37 @@ namespace CadburyRunner
 
         public void PlayFootstep()
         {
-            SFXController.Instance.PlayRandomSoundClip("Footsteps", AudioTrack.Footsteps);
+            SFXController.Instance.PlayRandomSoundClip("Footsteps", AudioTrack.Character);
         }
 
-        public void Death(ObstacleType type)
+        public void Death(ObstacleType type, ObstacleSoundType sound)
         {
+            // make sure animation plays even with timescale at 0
             m_anim.updateMode = AnimatorUpdateMode.UnscaledTime;
+
+            // play a relevant sound effect
+            string collectionName = string.Empty;
+            string clipName = string.Empty;
+            switch (sound)
+            {
+                case ObstacleSoundType.Hard:
+                    collectionName = "Collision Hard";
+                    break;
+                case ObstacleSoundType.Metal:
+                    collectionName = "Collision Metal";
+                    break;
+                case ObstacleSoundType.Tree:
+                    collectionName = "Tree";
+                    clipName = "TreeImpact";
+                    break;
+            }
+
+            if (clipName == string.Empty)
+                SFXController.Instance.PlayRandomSoundClip(collectionName, AudioTrack.Character);
+            else
+                SFXController.Instance.PlaySoundClip(collectionName, clipName, AudioTrack.Character);
+
+            // play the correct death anim
             string name = type.ToString() + " Death";
             m_anim.Play(name);
         }

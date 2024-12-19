@@ -80,11 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7106feb91737f174f8531d2876067573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_soundName: TreeImpact
-  m_collectionName: Tree Collision
-  m_mixerGroup: {fileID: -3459953315554296013, guid: 1e7b51e4691bcfe49bdf57f953d951c5,
-    type: 2}
   m_type: 1
+  m_soundType: 2
 --- !u!65 &8111152941359460615
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -126,7 +123,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3830712685680866215}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9efb4fa17bad83449a60ca6249a549a1, type: 3}
   m_Name: 

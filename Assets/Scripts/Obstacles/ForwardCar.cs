@@ -5,6 +5,7 @@
 ///
 ///</summary>
 
+using CadburyRunner.Audio;
 using UnityEngine;
 
 namespace CadburyRunner.Obstacle
@@ -20,6 +21,7 @@ namespace CadburyRunner.Obstacle
             if (other.CompareTag("Player"))
             {
                 m_isMoving = true;
+                SFXController.Instance.PlaySoundClip("Car", "Honk", AudioTrack.Obstacle);
             }
         }
 

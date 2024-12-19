@@ -14,7 +14,6 @@ namespace CadburyRunner
         [SerializeField] private GameObject m_collectableObject;
         [SerializeField] private ParticleSystem m_particleSystem;
 
-
         private float m_waveTime = 5f;
 
         private void Update()
@@ -28,14 +27,12 @@ namespace CadburyRunner
             m_collectableObject.transform.localScale = new Vector3 (scale, scale, scale);
 
             m_waveTime += Time.deltaTime * 2f;
-
         }
-
 
         public void Collected()
         {
             m_waveTime = 0f;
-            m_particleSystem.Play();
+            Instantiate(m_particleSystem);
         }
     }
 }

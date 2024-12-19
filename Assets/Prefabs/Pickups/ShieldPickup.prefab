@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4377719094039728749}
   - component: {fileID: 2115557124532739847}
   - component: {fileID: 1839914359236078656}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShieldPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_model: {fileID: 8042680103613590784, guid: 0a6d8c8528056f94e9817422ad3c6737, type: 3}
-  m_pointValue: 10
+  m_pointValue: 200
   m_type: 1
   m_powerupTime: 10
   m_pickupParticles: {fileID: 4688201101635118275, guid: 304209997a15eae44a9df8e3897bc48d,

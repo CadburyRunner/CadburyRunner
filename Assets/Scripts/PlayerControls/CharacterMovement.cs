@@ -6,9 +6,7 @@
 ///</summary>
 
 using UnityEngine;
-using CadburyRunner.Obstacle;
 using System.Collections;
-using CadburyRunner.Audio;
 using UnityEditor;
 using CadburyRunner.Level;
 

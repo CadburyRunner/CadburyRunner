@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4377719094039728749}
   - component: {fileID: 2115557124532739847}
   - component: {fileID: 1839914359236078656}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PointPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_model: {fileID: 7416250378339788743, guid: bc9389935bcda794fac578cb100f70a4, type: 3}
-  m_pointValue: 10
+  m_pointValue: 100
   m_type: 0
   m_powerupTime: 10
   m_pickupParticles: {fileID: 4303875402163313835, guid: b466e00556f1dfc4aada36284c52781c,
