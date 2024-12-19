@@ -4873,6 +4873,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7106feb91737f174f8531d2876067573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_soundName: 1
+  m_collectionName: Collision Metal
+  m_mixerGroup: {fileID: -3459953315554296013, guid: 1e7b51e4691bcfe49bdf57f953d951c5,
+    type: 2}
   m_type: 1
 --- !u!82 &-2419842967202894372
 AudioSource:
