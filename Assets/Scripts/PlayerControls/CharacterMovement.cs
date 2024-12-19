@@ -9,6 +9,8 @@ using UnityEngine;
 using CadburyRunner.Obstacle;
 using System.Collections;
 using CadburyRunner.Audio;
+using UnityEditor;
+using static UnityEngine.LightAnchor;
 
 namespace CadburyRunner
 {
@@ -22,10 +24,11 @@ namespace CadburyRunner
             [SerializeField, Range(0, 1)] private float m_input;
             [SerializeField] private float m_slidingTime;
             [SerializeField] private float forcePower;
+            [SerializeField] LayerMask m_groundedMask;
 
             [Header("References")]
-            [SerializeField] private GameObject m_normalCollider;
-            [SerializeField] private GameObject m_sliderCollider;
+            [SerializeField] private BoxCollider m_normalCollider;
+            [SerializeField] private BoxCollider m_sliderCollider;
 
             private Rigidbody m_rb;
             private bool m_isSliding;
@@ -40,9 +43,10 @@ namespace CadburyRunner
 
             void Update()
             {
-                m_isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, LayerMask.NameToLayer("Ground"));
+                
+
 #if UNITY_EDITOR
-                //SideToSideMovement(m_input);
+                SideToSideMovement(m_input);
                 if (Input.GetKeyDown(KeyCode.S))
                     Slide();
 
@@ -60,7 +64,12 @@ namespace CadburyRunner
             private void FixedUpdate()
             {
                 transform.position = Vector3.Lerp(new Vector3(m_leftFull,transform.position.y,0), new Vector3(m_rightFull,transform.position.y,0), m_input);
-                
+
+                // check grounded
+                Vector3 bottom = transform.position;
+                bottom.y -= m_normalCollider.bounds.extents.y;
+                m_isGrounded = Physics.BoxCast(transform.position + m_normalCollider.center, new Vector3(0.5f, 0.1f, 0.5f), 
+                    Vector3.down, transform.rotation, m_normalCollider.size.y, m_groundedMask, QueryTriggerInteraction.Ignore);
             }
 
             public void SideToSideMovement(float input)
@@ -78,14 +87,17 @@ namespace CadburyRunner
 
                     // reset to normal
                     m_isSliding = false;
-                    m_normalCollider.SetActive(true);
-                    m_sliderCollider.SetActive(false);
+                    m_normalCollider.gameObject.SetActive(true);
+                    m_sliderCollider.gameObject.SetActive(false);
 
                     // add force up
-                    m_rb.AddForce(Vector3.up * forcePower, ForceMode.Force);
+                    m_rb.AddForce(Vector3.up * forcePower, ForceMode.Impulse);
+
+                    // reset grounded
+                    m_isGrounded = false;
 
                     // play sound effect
-                    AudioSystem.Instance.PlaySound(1, 0);
+                    SFXController.Instance.PlaySoundClip("PlayerMove", "Jump", AudioTrack.PlayerMove);
                 }
             }
 
@@ -104,14 +116,14 @@ namespace CadburyRunner
                     {
                         // if not in the air then switch collider to sliding collider
                         m_isSliding = true;
-                        m_normalCollider.SetActive(false);
-                        m_sliderCollider.SetActive(true);
+                        m_normalCollider.gameObject.SetActive(false);
+                        m_sliderCollider.gameObject.SetActive(true);
 
                         // start the IsSliding coroutine
                         StartCoroutine(IsSliding());
 
                         // play sound effect
-                        AudioSystem.Instance.PlaySound(0, 0);
+                        SFXController.Instance.PlaySoundClip("PlayerMove", "Slide", AudioTrack.PlayerMove);
                     }
                 }
             }
@@ -123,8 +135,8 @@ namespace CadburyRunner
 
                 // reset the colliders and bool
                 m_isSliding = false;
-                m_normalCollider.SetActive(true);
-                m_sliderCollider.SetActive(false);
+                m_normalCollider.gameObject.SetActive(true);
+                m_sliderCollider.gameObject.SetActive(false);
 
                 // stop the coroutine
                 StopCoroutine(IsSliding());
@@ -134,6 +146,14 @@ namespace CadburyRunner
             {
 
             }
+
+#if UNITY_EDITOR
+            private void OnDrawGizmos()
+            {
+                Handles.color = Color.green;
+                Handles.DrawWireCube(transform.position + Vector3.down * 0.05f, Vector3.one);
+            }
+#endif
 
         }
 	}

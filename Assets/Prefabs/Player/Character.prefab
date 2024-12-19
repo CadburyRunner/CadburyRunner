@@ -378,8 +378,11 @@ MonoBehaviour:
   m_input: 0
   m_slidingTime: 1.5
   forcePower: 250
-  m_normalCollider: {fileID: 7137171417246446062}
-  m_sliderCollider: {fileID: 7137171415663144713}
+  m_groundedMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_normalCollider: {fileID: 7137171417246446056}
+  m_sliderCollider: {fileID: 7137171415663144715}
   lose: 0
 --- !u!54 &7137171416823435131
 Rigidbody:
@@ -411,7 +414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_tiltThreashold: {x: 100, y: 0}
   m_tiltSensitivity: 0.03
-  m_swipeThreashold: 15
+  m_swipeThreashold: 5
   m_holdDelay: 0.3
   m_swipeUpEvent:
     m_PersistentCalls:

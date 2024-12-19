@@ -21,7 +21,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Cloud_MAT
-  m_Shader: {fileID: -6465566751694194690, guid: 7639210e31ae6084d8f31b7bacc83afa, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 7639210e31ae6084d8f31b7bacc83afa,
+    type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _ALPHATEST_ON
@@ -57,7 +58,7 @@ Material:
     - _QueueOffset: 0
     - _VertexOffset: 0.5
     m_Colors:
-    - _CloudsSpeed: {r: 0.05, g: 0.005, b: 0, a: 0}
+    - _CloudsSpeed: {r: 0.0125, g: -0.03, b: 0, a: 0}
     - _Color: {r: 0.95374364, g: 0.9198113, b: 1, a: 0}
     - _Distortion_Speed: {r: 0, g: 0, b: 0, a: 0}
     - _SkyColor: {r: 0.4083787, g: 0, b: 0.9245283, a: 0}

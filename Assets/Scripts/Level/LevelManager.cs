@@ -29,6 +29,9 @@ namespace CadburyRunner.Level
 
         [SerializeField] private LevelChunk[] m_possibleLevelChunks;
 
+		[SerializeField] private GameObject[] m_possiblePickups;
+		public GameObject[] Pickups => m_possiblePickups;
+
 		private LevelChunk m_previousChunk;
 		private LevelChunk m_currentChunk;
 		private LevelChunk m_nextChunk;
@@ -112,12 +115,14 @@ namespace CadburyRunner.Level
 
 		private IEnumerator approachLevelSpeed(float target)
 		{
-			while (m_currentLevelSpeed != target)
+			while (Mathf.Abs(target -m_currentLevelSpeed) > 0.01f)
 			{
 				m_currentLevelSpeed = Mathf.MoveTowards(m_currentLevelSpeed, target, LevelMetrics.Decceleration * Time.deltaTime);
 				yield return null;
 			}
 			m_returningToNormalSpeed = true;
+
+			StopCoroutine(approachLevelSpeed(target));
 		}
     }
 }
