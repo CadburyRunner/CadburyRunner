@@ -70,6 +70,17 @@ namespace CadburyRunner.Audio
                     SFXController.Instance.PlaySoundClip(m_soundCollection, m_soundName, AudioTrack.Vehicle, mixerGroup, true);
                 }
             }
+            if (m_audioType == SoundTypes.Music)
+            {
+                if (loop == false)
+                {
+                    SFXController.Instance.PlaySoundClip(m_soundCollection, m_soundName, AudioTrack.Music, mixerGroup, false);
+                }
+                else
+                {
+                    SFXController.Instance.PlaySoundClip(m_soundCollection, m_soundName, AudioTrack.Music, mixerGroup, true);
+                }
+            }
         }
     }
 }
