@@ -38,6 +38,7 @@ namespace CadburyRunner.Mobile
         [SerializeField] private UnityEvent<float> m_tiltRightEvent;
         [SerializeField] private UnityEvent<float> m_tiltForwardEvent;
         [SerializeField] private UnityEvent<float> m_tiltBackwardEvent;
+        [SerializeField] private UnityEvent<float> m_tiltRecalibrationEvent;
 
         private Vector3 fp;   //First touch position
         private Vector3 lp;   //Last touch position
@@ -138,7 +139,7 @@ namespace CadburyRunner.Mobile
             }
 
             //Get the gyro angles in deg
-            Vector3 newRate = Input.gyro.rotationRateUnbiased;
+            Vector3 newRate = Input.gyro.rotationRateUnbiased * Time.deltaTime;
             m_inputedRotation += newRate;
             //Check if the axis is greater then the threashold
             if (Mathf.Abs(newRate.x) > m_tiltThreashold.x)
@@ -172,8 +173,8 @@ namespace CadburyRunner.Mobile
         }
         static public void Recalibrate()
         {
-            Instance.m_inputedRotation = Vector3.zero;
-            Instance.m_inputedRotation.y += 0.5f / Instance.m_tiltSensitivity;
+            Instance.m_inputedRotation.y = 0.5f / Instance.m_tiltSensitivity;
+            Instance.m_tiltRecalibrationEvent.Invoke(Instance.m_inputedRotation.y);
         }
     }
 }
